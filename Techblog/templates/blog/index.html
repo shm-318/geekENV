@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 {% load static %}
+{% load socialaccount %}
 <html>
 <head>
 	<title></title>
@@ -7,6 +8,7 @@
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Uchen&display=swap" rel="stylesheet">
+	<link href="{% static 'img/blog-icon.png' %}" rel="icon" />
 	<link rel="stylesheet" href="{% static 'css/index.css' %}">
 </head>
 <body>
@@ -21,7 +23,7 @@
 		<img src="{% static 'img.jpg' %}">
 	</div>
 	<div class="social_media_signin">
-			<div  class="social_media_signin_google">Sign in with Google</div>
+			<div  class="social_media_signin_google"><a href="{% provider_login_url 'google' %}">Sign in with Google</a> </div>
 			<div class="social_media_signin_linkedin">Sign in with Linkedin</div>
 			<div class="social_media_signin_twitter">Sign in with Twitter</div>
 	</div>

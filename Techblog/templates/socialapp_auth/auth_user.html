@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#000000" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link href="{% static 'img/user-profile-avtr-2.png' %}" rel="icon" />
+    <title> Home | {{ request.user.username }} </title>
+</head>
+<body>
+    <p>Hiii.. {{ user.username }} !</p>
+    <p>{{ user.email }}</p>
+    <hr>
+
+    <button><a href="{% url 'signout_view' %}" style="text-decoration: none;">LogOut</a></button>
+</body>
+</html>
