@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'bot',
 
     #for auth
-    'socialapp_auth',
+    
     'django.contrib.sites',
     'allauth',
     'allauth.account',

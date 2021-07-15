@@ -11,8 +11,8 @@
     <title> Home | {{ request.user.username }} </title>
 </head>
 <body>
-    <p>Hiii.. {{ user.username }} !</p>
-    <p>{{ user.email }}</p>
+    <p>Hiii.. {{ request.user.username }} !</p>
+    <p>{{ request.user.email }}</p>
     <hr>
 
     <button><a href="{% url 'signout_view' %}" style="text-decoration: none;">LogOut</a></button>
