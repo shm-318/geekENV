@@ -1,22 +1,81 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
-from django.contrib.auth import logout
 from .forms import *
+from django.views.generic import View
+from django.contrib.auth.views import (
+    PasswordResetView, 
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+    PasswordChangeView,
+    PasswordChangeDoneView,
+    )
+from django.contrib.auth import (
+                                    authenticate, 
+                                    login, 
+                                    logout, 
+                                    get_user_model,
+                                )
+from django.contrib import messages
+from django.urls import reverse_lazy
 
+User = get_user_model()
 
 # Create your views here.
-def HomeView(request):
-    return render(request,'socialapp_auth/auth_user.html',{})
+class ProfileView(View):
+    template_name_auth = 'authentication/auth_user.html'
+    template_name_anon = 'authentication/anon_user.html'
+
+    def get(self, request, *args, **kwargs):
+        username = kwargs.get('username')
+
+        try:
+            user = User.objects.get(username=username)
+        except Exception as e:
+            return HttpResponse('<h1>This User does not exist.</h1>')
+
+        
+        if username == request.user.username:
+            context = { 'user': user }
+            return render(request, self.template_name_auth, context=context)
+        else:
+            context = { 'user': user }
+            return render(request, self.template_name_anon, context=context)
+        
+
+
+def Signin(request, *args, **kwargs):
+
+    if request.method == 'POST':
+        email_username = request.POST.get('email_username')
+        password = request.POST.get('password')
+        
+        """ try:
+            user_obj = User.objects.get(username=email_username)
+            email = user_obj.email
+        except Exception as e:
+            email = email_username """
+        user = authenticate(request, username=email_username, password=password)
+            
+        if user is None:
+            messages.error(request, 'Invalid Login.', extra_tags="error")
+            return redirect('blog:index_view') 
+        
+        
+        login(request, user)
+        
+        #messages.success(request, 'Thanks for Login, Welcome to Insta Clone.', extra_tags='success')
+        return redirect('blog:profile_view',request.user.username)
 
 
 def IndexView(request):
     if request.user.is_authenticated:
-            return redirect('home_blog_view')
+        return redirect('blog:profile_view',request.user.username)
     return render(request,'blog/index.html',{})
 
 def Signout(request):
     logout(request)
-    return redirect('index_view')
+    return redirect('blog:index_view')
 
 def contact(request):
     form1 = ContactForm()
@@ -33,3 +92,19 @@ def about(request):
     return render(request, 'blog/about.html')
 
 
+class PRView(PasswordResetView):
+    email_template_name = 'authentication/password_reset_email.html'
+    template_name = 'authentication/password_reset.html'
+    success_url = reverse_lazy('blog:password_reset_done')
+
+class PRConfirm(PasswordResetConfirmView):
+    template_name = 'authentication/password_reset_confirm.html'
+    success_url = reverse_lazy('blog:password_reset_complete')
+
+class PRDone(PasswordResetDoneView):
+    template_name = 'authentication/password_reset_done.html'
+    
+
+class PRComplete(PasswordResetCompleteView):
+    template_name = 'authentication/password_reset_complete.html'
+    

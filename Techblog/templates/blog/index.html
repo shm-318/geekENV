@@ -81,18 +81,28 @@
 
 	<!--For User Login -->
 	<div class="container-fluid login_field">
-		<div class="login_field_email">
-  			<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email address or Phone Number">
-		</div>
-		<div class="login_field_pass">
-  			<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Password">
-		</div>
-		<div class="button">
-			<div class="button_login">
-				<button type="button" class="btn btn-primary">Log In</button>
+		{% if messages %}
+    		{% for message in messages %}
+        		<div class="alert alert-danger" role='alert'>
+            		{{ message }}
+        		</div>                        
+    		{% endfor %}
+		{% endif %}
+		<form action="{% url 'blog:signin' %}" method="POST">
+			{% csrf_token %}
+			<div class="login_field_email">
+				<input type="text" name="email_username" class="form-control" id="exampleFormControlInput1" placeholder="Email address or username">
 			</div>
+			<div class="login_field_pass">
+				<input type="password" name="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+			</div>
+			<div class="button_login">
+				<input type="submit" value="signin">
+			</div>
+		</form>
+		<div class="button">
 			<div class="forgot_pass">
-				<p><a href="" >Forgotten Password ?</a></p>
+				<p><a href="{% url 'blog:password_reset' %}" >Forgotten Password ?</a></p>
 			</div>
 			<div class="button_signup">
 				<button type="button" class="btn btn-success">Create New Account</button>

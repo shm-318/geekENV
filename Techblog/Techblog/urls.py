@@ -24,5 +24,8 @@ urlpatterns = [
     url('',include('blog.urls')),
     url('',include('bot.urls')),
     path('accounts/', include('allauth.urls')),
+
+    #for password reset if some non-solvable error comes
+    #url(r'^', include('django.contrib.auth.urls')),
     
 ]
