@@ -1,6 +1,7 @@
 from django.http.response import HttpResponse
 from django.shortcuts import render,redirect
 from django.contrib.auth import logout
+from .forms import *
 
 
 # Create your views here.
@@ -16,3 +17,19 @@ def IndexView(request):
 def Signout(request):
     logout(request)
     return redirect('index_view')
+
+def contact(request):
+    form1 = ContactForm()
+
+    if request.method == 'POST':
+        form1 = ContactForm(request.POST)
+
+        if form1.is_valid():
+            form1.save()
+            return redirect('/')
+    return render(request, 'blog/contact.html', context={'form1': form1})
+
+def about(request):
+    return render(request, 'blog/about.html')
+
+
