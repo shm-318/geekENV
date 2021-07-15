@@ -41,22 +41,75 @@
     </div>
   </div>
 </nav>
- <div class="header_content">
- 		<h1 style="text-align: center;">Logo Here</h1>
- </div>
-	
-
 <div class="main">
 	<!-- For Some Image -->
 	<div class = "algo_image">
 		<img src="{% static 'img.jpg' %}">
 	</div>
 	<div class="social_media_signin">
-			<div  class="social_media_signin_google"><a href="{% provider_login_url 'google' %}">Sign in with Google</a> </div>
+			{% comment %} <div  class="social_media_signin_google"><a href="{% provider_login_url 'google' %}">Sign in with Google</a> </div>
 			<div class="social_media_signin_linkedin"><a href="{% provider_login_url 'linkedin_oauth2' %}">Sign in with Linkedin</a></div>
-			<div class="social_media_signin_twitter"><a href="{% provider_login_url 'twitter' %}">Sign in with Twitter</a></div>
+			<div class="social_media_signin_twitter"><a href="{% provider_login_url 'twitter' %}">Sign in with Twitter</a></div> {% endcomment %}
+			<div class='g-sign-in-button'>
+    			<div class=content-wrapper>
+        			<div class='logo-wrapper'>
+            			<img src='https://developers.google.com/identity/images/g-logo.png'>
+        			</div>
+        			<span class='text-container'>
+      					<span ><a href="{% provider_login_url 'google' %}" class = "myText">Sign in with Google</a></span>
+    				</span>
+    			</div>
+			</div>
+
+			<div class='g-sign-in-button'>
+    			<div class=content-wrapper>
+        			<div class='logo-wrapper'>
+            			<img src="{% static 'linkedin.png' %}">
+        			</div>
+        			<span class='text-container'>
+      					<span ><a href="{% provider_login_url 'linkedin_oauth2' %}" class = "myText">Sign in with Linkedin</a></span>
+    				</span>
+    			</div>
+			</div>
+
+			<div class='g-sign-in-button'>
+    			<div class=content-wrapper>
+        			<div class='logo-wrapper'>
+            			<img src="{% static 'twitter.png' %}">
+        			</div>
+        			<span class='text-container'>
+      					<span ><a  href="{% provider_login_url 'twitter' %}" class = "myText">Sign in with Twitter</a></span>
+    				</span>
+    			</div>
+			</div>
+
+		</div>
+
+		{% comment %} <div class=content-wrapper>
+        	<div class='logo-wrapper'>
+            	<img src='https://developers.google.com/identity/images/g-logo.png'>
+        	</div>
+        	<span class='text-container'>
+      		<span>Sign in with Google</span>
+    		</span>
+    		</div>
+		</div>
+
+		</div> {% endcomment %}
+{% comment %} 
+		<div class=content-wrapper>
+        	<div class='logo-wrapper'>
+            	<img src='https://developers.google.com/identity/images/g-logo.png'>
+        	</div>
+        	<span class='text-container'>
+      		<span>Sign in with Google</span>
+    		</span>
+    		</div>
+		</div>
+
+		</div> {% endcomment %}
+
 	</div>
-</div>
 
 
 <div class="main_login_content">
@@ -85,7 +138,7 @@
   			<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Email address or Phone Number">
 		</div>
 		<div class="login_field_pass">
-  			<input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Password">
+  			<input type="password" class="form-control" id="exampleFormControlInput1" placeholder="Password">
 		</div>
 		<div class="button">
 			<div class="button_login">
