@@ -64,7 +64,7 @@ def Signin(request, *args, **kwargs):
         
         login(request, user)
         
-        #messages.success(request, 'Thanks for Login, Welcome to Insta Clone.', extra_tags='success')
+        #messages.success(request, 'Thanks for Login.', extra_tags='success')
         return redirect('blog:profile_view',request.user.username)
 
 
