@@ -46,9 +46,9 @@ form{
 .all{
   margin: 0;
   padding:0;
-  background: #2C3E50;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #FD746C, #2C3E50);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #FD746C, #2C3E50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #ECE9E6;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #ECE9E6);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #ECE9E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
   height: 180vh;
   width: 100vw;
@@ -94,13 +94,98 @@ a{
 .ad>li{
     margin:5px;
 }
+.container
+{
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+}
 .card
 {
     border: 2px solid black;
+    width: 50vw;
+    margin-left: 5vw;
+}
+.trend
+{
+  width:30vw; 
+  font-size: 10px; 
+  grid-template-areas: trend;
 }
 .card-img-top
 {
     height: 60%;
+}
+.brand-logo
+{
+  border: 2px solid black;
+  height: 15vw;
+}
+.trending
+{
+  border: 2px solid black;
+  height: 12vw;
+  display: flex;
+}
+.content{
+  display: flex;
+}
+.articles
+{
+  width: 75vw;
+  height:auto;
+  border:2px solid black;
+  grid-area:articles;
+}
+.tags
+{
+  width: 25vw;
+  height: auto;
+  border: 2px solid black;
+  grid-area:tags;
+}
+.container
+{
+  margin-left:0;
+  margin-right:0;
+  margin-top:10px;
+  
+}
+.col-md-4 >img
+{
+   height: 200px;
+}
+.tags,.articles,.content,.trending,.brand-logo
+{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.content,.trending,.brand-logo
+{
+  width: 95vw;
+}
+.topic-tags{
+  border:2px solid black;
+  margin:10px;
+  background-color: #D3CCE3;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.topic-tags>a{
+  text-decoration: none;
+  color:#080808;
+
+}
+.topic-tags:hover{
+  background-color:#30E8BF;
+
+}
+.container1
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 @media only screen and (max-width:768px)
 {
@@ -121,11 +206,40 @@ a{
     .about{
         font-size: medium;
     }
-    .card
-    {
-        margin: 20px;
+    .navbar-nav > li{
+      padding-left:10px;
+      padding-right:10px;
     }
+    .card
+   {
+    border: 2px solid black;
+    width: 85vw;
+    margin-left: 5vw;
+   }
    
+   .col-md-4 >img
+   {
+     width:85vw;
+   }
+   .trending
+   {
+     display: grid;
+     height:fit-content;
+     grid-template-areas: "h5" 
+                          "trend";
+
+   } 
+    .content
+    {
+      display: grid;
+      grid-template-areas:"tags"
+                          "articles"
+    }
+    .tags,.articles
+    {
+      width: 95vw;
+    }
+
     
     
     

@@ -84,6 +84,10 @@ background: linear-gradient(to right, #FD746C, #2C3E50); /* W3C, IE 10+/ Edge, F
       margin-right: 10%;
       margin-top: 8%;
     }
+    .navbar-nav > li{
+      padding-left:10px;
+      padding-right:10px;
+    }
     
     
 }

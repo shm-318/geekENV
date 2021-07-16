@@ -1,0 +1,108 @@
+{% extends 'blog/about.html' %}
+{% load static %}
+{% block title %}<title>Techblog</title>{% endblock %}
+{% block css %} <link rel="stylesheet" href="{% static 'css/lead.css' %}" /> {% endblock %}
+
+
+
+{% block body_block %}
+<div class="container">
+   <div class="brand-logo">
+      <h3>Medium dot com ka content churaenge, Hue Hue Hue</h3>
+   </div>
+   <div class="trending">
+     <h5 style="text-align:center;margin-bottom:20px">Trending In TechBlog</h5>
+ <div class="card trend">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-body" >
+    <blockquote class="blockquote mb-0">
+      <p style="font-size:12px">A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+  </div>
+</div>
+<div class="card trend">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-body" >
+    <blockquote class="blockquote mb-0">
+      <p style="font-size:12px">A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+  </div>
+</div>
+<div class="card trend">
+  <div class="card-header">
+    Quote
+  </div>
+  <div class="card-body" >
+    <blockquote class="blockquote mb-0">
+      <p style="font-size:12px">A well-known quote, contained in a blockquote element.</p>
+      <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+    </blockquote>
+  </div>
+</div>
+   </div>
+   <div class="content">
+      <div class="articles">
+         <div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'suraj.jpg' %}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="author"><a href="#" style="text-decoration:none;color:Black"><b>Shivam Mishra</b></a>in<a href="#" style="text-decoration:none;color:Black"><b>Trending</b></a>
+        <a href="#" style="text-decoration:none;color:Black"><h5 class="card-title">Most Wanted Criminal Arrested</h5></a>
+        <p class="card-text">Suraj was on a long run and was wanted in multiple cases in 28 states and 9 UTs of India.</p>
+        <p class="card-text"><small class="text-muted">July 16,2021 &nbsp;&nbsp;</small><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mb-3" >
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'suraj.jpg' %}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="author"><a href="#" style="text-decoration:none;color:Black"><b>Shivam Mishra</b></a>in<a href="#" style="text-decoration:none;color:Black"><b>Trending</b></a>
+        <a href="#" style="text-decoration:none;color:Black"><h5 class="card-title">Most Wanted Criminal Arrested</h5></a>
+        <p class="card-text">Suraj was on a long run and was wanted in multiple cases in 28 states and 9 UTs of India.</p>
+        <p class="card-text"><small class="text-muted">July 16,2021 &nbsp;&nbsp;</small><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card mb-3">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img src="{% static 'suraj.jpg' %}" class="img-fluid rounded-start" alt="...">
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <p class="author"><a href="#" style="text-decoration:none;color:Black"><b>Shivam Mishra</b></a>in<a href="#" style="text-decoration:none;color:Black"><b>Trending</b></a>
+        <a href="#" style="text-decoration:none;color:Black"><h5 class="card-title">Most Wanted Criminal Arrested</h5></a>
+        <p class="card-text">Suraj was on a long run and was wanted in multiple cases in 28 states and 9 UTs of India.</p>
+        <p class="card-text"><small class="text-muted">July 16,2021 &nbsp;&nbsp;</small><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+      </div>
+      <div class="tags">
+         <h3 style="text-align:center">
+            Explore tags </h3>
+          <div class="container1" style="margin-left:20px">
+            <span class="topic-tags"><a href="#">HTML</a></span>  <span class="topic-tags"><a href="#">CSS</a></span>  <span class="topic-tags"><a href="#">Javascript</a></span> <span class="topic-tags"><a href="#">JQuery</a></span> <span class="topic-tags"><a href="#">Django</a></span> <span class="topic-tags"><a href="#">ReactJs</a></span> <span class="topic-tags"><a href="#">CP</a></span>
+          </div>
+      </div>
+   </div>
+
+</div>
+
+{% endblock %}

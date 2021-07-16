@@ -8,11 +8,17 @@ from .forms import *
 def HomeView(request):
     return render(request,'socialapp_auth/auth_user.html',{})
 
+def register(request):
+    return render(request,'blog/register.html',{})
+
 
 def IndexView(request):
-    if request.user.is_authenticated:
-            return redirect('home_blog_view')
+    #if request.user.is_authenticated:
+            #return redirect('/')
     return render(request,'blog/index.html',{})
+
+def lead(request):
+    return render(request,'blog/lead.html')
 
 def Signout(request):
     logout(request)
