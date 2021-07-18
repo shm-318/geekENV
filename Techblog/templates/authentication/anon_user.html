@@ -4,6 +4,7 @@
 {% block extra_head %}
     
     <link href="{% static 'img/user-profile-avtr-2.png' %}" rel="icon" />
+    <link rel="stylesheet" type="text/css" href="{% static 'css/authentication/main.css' %}">
     <title> Home | {{ request.user.username }} </title>
 
 {% endblock %}
@@ -11,9 +12,18 @@
 
 {% block content %}
 
+<header>
+    <nav class="navbar navbar-light bg-white border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'img/log clonex.jpg' %}" class="nav__insta__logo">
+            </a>
+        </div>
+    </nav>
+</header>
     <p>Hiii.. {{ request.user.username }} !</p>
     <p>{{ request.user.email }}</p>
-    <hr>
+    
 
     <button><a href="{% url 'blog:signout' %}" style="text-decoration: none;">LogOut</a></button>
 
