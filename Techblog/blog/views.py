@@ -71,7 +71,11 @@ def Signin(request, *args, **kwargs):
 def IndexView(request):
     if request.user.is_authenticated:
         return redirect('blog:profile_view',request.user.username)
+<<<<<<< HEAD
     return render(request,'blog/lead.html',{})
+=======
+    return render(request,'blog/index.html',{})
+>>>>>>> 4fd2b35cfc5da738bf4731bd3910fe7ff1bdf2ff
 
 def Signout(request):
     logout(request)
@@ -108,6 +112,22 @@ class PRDone(PasswordResetDoneView):
     template_name = 'authentication/password_reset_done.html'
     
 
+<<<<<<< HEAD
+=======
+class PRView(PasswordResetView):
+    email_template_name = 'authentication/password_reset_email.html'
+    template_name = 'authentication/password_reset.html'
+    success_url = reverse_lazy('blog:password_reset_done')
+
+class PRConfirm(PasswordResetConfirmView):
+    template_name = 'authentication/password_reset_confirm.html'
+    success_url = reverse_lazy('blog:password_reset_complete')
+
+class PRDone(PasswordResetDoneView):
+    template_name = 'authentication/password_reset_done.html'
+    
+
+>>>>>>> 4fd2b35cfc5da738bf4731bd3910fe7ff1bdf2ff
 class PRComplete(PasswordResetCompleteView):
     template_name = 'authentication/password_reset_complete.html'
     

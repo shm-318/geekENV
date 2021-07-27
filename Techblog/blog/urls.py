@@ -11,7 +11,10 @@ urlpatterns = [
     path('home/<str:username>/',views.ProfileView.as_view(),name="profile_view"),
     url(r'^contact/',views.contact,name="contact"),
     url(r'^about/',views.about,name="about"),
+<<<<<<< HEAD
     url(r'^register/',views.register,name="register"),
+=======
+>>>>>>> 4fd2b35cfc5da738bf4731bd3910fe7ff1bdf2ff
     path('signout/', views.Signout, name='signout'),
     path('signin/', views.Signin, name='signin'),
 
