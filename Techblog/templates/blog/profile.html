@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Profile</title>
+</head>
+<body>
+	
+    {% if isSignedIn %}
+    <ul>
+        <h1> Welcome to Your profile </h1>
+        <h2>User's Information: </h2>
+		<li>Full Name of User : {{ fullname }}</li>
+        <li>Username : {{ username }}</li>
+        <li>Email : {{ email }} </li>
+        <li>Gender of the User is : {{ gender }} </li>
+        <li>Phone Number : {{ phoneNumber }} 
+	</ul>
+    {% else %}
+        <h1> Bhai Pehle Sign In Karle ... ! </h1>
+    {% endif %}
+</body>
+</html>
