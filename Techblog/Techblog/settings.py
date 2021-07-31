@@ -195,3 +195,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 
 EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
 EMAIL_FILE_PATH = BASE_DIR / 'emails'
+
+#! For Custom User Models
+AUTH_USER_MODEL = 'blog.User'

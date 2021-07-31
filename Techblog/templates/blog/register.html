@@ -78,11 +78,11 @@
           </div>
           <div class="input-box">
             <span class="details">Password</span>
-            <input type="password" placeholder="Enter your password" name="Password" required>
+            <input type="password" placeholder="Enter your password" name="password1" required>
           </div>
           <div class="input-box">
             <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" name="confirm" required>
+            <input type="password" placeholder="Confirm your password" name="password2" required>
           </div>
         </div>
         <div class="gender-details">
@@ -116,10 +116,10 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script type="text/javascript">
-    {% if match %}
+    {% if password_match == False %}
       alert("Password and Confirm Password does not match");
     {% endif %}
-    {% if new == False %}
+    {% if email_unique == False %}
       alert("Email Already Registered..")
     {% endif %}
   </script>

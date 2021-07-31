@@ -1,4 +1,5 @@
 {% load static %}
+{% load socialaccount %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -130,10 +131,10 @@
       <div class="option"><b>Not registered Yet?</b> <br> <a href="{% url 'blog:register' %}">Register Here</a></div>
       <div class="option"><b>Or Connect With Social Media</b></div>
       <div class="twitter">
-        <a href="#"><i class="fab fa-twitter"></i>Sign in With Twitter</a>
+        <a href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>Sign in With Google</a>
       </div>
-      <div class="facebook">
-        <a href="#"><i class="fab fa-facebook-f"></i>Sign in With Facebook</a>
+      <div class="twitter">
+        <a href="{% provider_login_url 'twitter' %}"><i class="fab fa-twitter"></i>Sign in With Twitter</a>
       </div>
     </div>
     </div>

@@ -1,7 +1,8 @@
-from django.http.response import HttpResponse
+from django.http.response import HttpResponse,HttpResponseRedirect
 from django.shortcuts import render,redirect
 from .forms import *
 from django.views.generic import View
+from .models import *
 from django.contrib.auth.views import (
     PasswordResetView, 
     PasswordResetDoneView,
@@ -50,11 +51,11 @@ def Signin(request, *args, **kwargs):
         email_username = request.POST.get('email_username')
         password = request.POST.get('password')
         
-        """ try:
+        try:
             user_obj = User.objects.get(username=email_username)
             email = user_obj.email
         except Exception as e:
-            email = email_username """
+            email = email_username 
         user = authenticate(request, username=email_username, password=password)
             
         if user is None:
@@ -91,8 +92,40 @@ def contact(request):
 def about(request):
     return render(request, 'blog/about.html')
 
+# def register(request):
+    
+#     return render(request, 'blog/register.html')
 def register(request):
-    return render(request, 'blog/register.html')
+    email_unique=True
+    password_match=True
+    if request.method == "POST":
+        fullname = request.POST.get('fullname')
+        username = request.POST.get('username')
+        Email = request.POST.get('mail')
+        phonenumber = request.POST.get('phone')
+        password = request.POST.get('password1')
+        confirmPassword = request.POST.get('password2')
+        gender = request.POST.get('gender')
+        print("Full Name : ",fullname)
+        print("User Name : ",username)
+        print("Email Address: ",Email)
+        print("Phone Number: ",phonenumber)
+        print("Password : ",password)
+        print("Confirm Password: ",confirmPassword)
+        print("Gender: ",gender)
+        if password == confirmPassword:
+            if len(User.objects.filter(email=Email)) == 0:
+                User.objects.create(full_name=fullname,username=username,email=Email,phone_number=phonenumber,password=password,gender=gender)
+                print("Registered Successfully....")
+                return HttpResponseRedirect('/signin')
+            else:
+                email_unique=False
+                return render(request,"blog/register.html",{'email_unique':email_unique,'password_match':password_match})
+        else:
+            password_match=False
+            print("Password and Confirm Password does not Match..")
+            return render(request,"blog/register.html",{'email_unique':email_unique,'password_match':password_match})
+    return render(request,"blog/register.html",{'email_unique':email_unique,'password_match':password_match})
 
 # def login(request):
 #     return render(request,'blog/login.html')
