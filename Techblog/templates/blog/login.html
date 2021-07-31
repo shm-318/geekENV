@@ -2,40 +2,148 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
     <title>Login</title>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   </head>
   <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: white">Techblog</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/"
+                  style="color: white"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/" style="color: white">Publish</a>
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'blog:register' %}"
+                  style="color: white"
+                  >Get Started</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white"
+                  >Compile and Run</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" style="color: white"
+                  >Ask a Query</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  More
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item" href="{% url 'blog:about' %}"
+                      >About</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'blog:contact' %}"
+                      >Contact Us</a
+                    >
+                  </li>
+                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="all">
     <div class="container">
       <form action="" method="POST">
         {% csrf_token %}
         <div class="title">Login</div>
         <div class="input-box underline">
-          <input type="text" placeholder="Enter Your Email" name="email_username" required>
+          <input
+            type="text"
+            placeholder="Enter Your Email"
+            name="email_username"
+            required
+          />
           <div class="underline"></div>
         </div>
         <div class="input-box">
-          <input type="password" placeholder="Enter Your Password" name="password" required>
+          <input
+            type="password"
+            placeholder="Enter Your Password"
+            name="password"
+            required
+          />
           <div class="underline"></div>
         </div>
         <div class="input-box button">
-          <input type="submit" name="" value="Continue">
+          <input type="submit" name="" value="Continue" />
         </div>
       </form>
-        <div class="option">or Connect With Social Media</div>
-        <div class="twitter">
-          <a href="#"><i class="fab fa-twitter"></i>Sign in With Twitter</a>
-        </div>
-        <div class="facebook">
-          <a href="#"><i class="fab fa-facebook-f"></i>Sign in With Facebook</a>
-        </div>
-        
+      <div class="option"><b>Forgotten Password?</b> <br><a href="{% url 'blog:password_reset' %}">Reset Password</a></div>
+      <div class="option"><b>Not registered Yet?</b> <br> <a href="{% url 'blog:register' %}">Register Here</a></div>
+      <div class="option"><b>Or Connect With Social Media</b></div>
+      <div class="twitter">
+        <a href="#"><i class="fab fa-twitter"></i>Sign in With Twitter</a>
+      </div>
+      <div class="facebook">
+        <a href="#"><i class="fab fa-facebook-f"></i>Sign in With Facebook</a>
+      </div>
     </div>
+    </div>
+    <div class="footer">All rights reserved &nbsp;&nbsp;TechBlog Inc©</div>
 
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <script type="text/javascript">
       {% if valid == False %}
         alert("Invalid Username or Password")
@@ -43,4 +151,3 @@
     </script>
   </body>
 </html>
-

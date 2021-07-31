@@ -7,17 +7,26 @@
   font-family: 'Poppins',sans-serif;
 }
 html, body{
-  display: grid;
   height: 100vh;
   width: 100%;
-  place-items: center;
   /*background: linear-gradient(to right, #99004d 0%, #ff0080 100%);*/
   background: linear-gradient(135deg, #71b7e6, #9b59b6);
+}
+.all
+{
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 35%;
+  margin-right: 35%;
+  padding: 10px;
 }
 ::selection{
   background: #ff80bf;
 
 }
+
 .container{
   background: #fff;
   max-width: 350px;
@@ -100,6 +109,18 @@ html, body{
   font-size: 14px;
   text-align: center;
 }
+.option
+{
+  margin-bottom: 5px;
+  font-size: 16px;
+}
+
+.option a
+{
+  text-decoration: none;
+  color:#3b5998
+}
+
 .container .facebook a,
 .container .twitter a{
   display: block;
@@ -134,4 +155,33 @@ html, body{
 .container .facebook a:hover{
   background: linear-gradient( to left,  #3b5998 0%, #476bb8 100%);
   margin: 20px 0 50px 0;
+}
+.navbar-nav > li {
+  padding-left: 40px;
+  padding-right: 40px;
+}
+.nav-menu
+{
+  width: 100vw;
+  margin-top:0;
+  padding: 0;
+}
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 5vh;
+  background-color: black;
+  color: white;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px)
+{
+   .all
+   {
+     margin-left: 10%;
+     margin-right: 10%;
+   }
 }
