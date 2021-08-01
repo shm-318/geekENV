@@ -70,7 +70,7 @@ form {
     #2c3e50
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
-  height: 180vh;
+  height:fit-content;
   width: 100vw;
 }
 .navbar-nav > li {
@@ -82,14 +82,16 @@ form {
   color: #30e8bf;
 }
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  height: 5vh;
-  background-color: black;
-  color: white;
-  text-align: center;
+    position:relative;
+    height: 25px;
+    background-color:black;
+    text-align: center;
+    color: white;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    margin-bottom: 0px;
+    margin-top: 10px;
 }
 .develop {
   font-size: medium;

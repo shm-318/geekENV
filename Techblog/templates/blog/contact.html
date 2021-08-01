@@ -48,7 +48,9 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <li><a class="dropdown-item" href="{% url 'blog:about' %}">About</a></li>
             <li><a class="dropdown-item" href="{% url 'blog:contact' %}">Contact Us</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
+            {% if request.user.is_authenticated %}
+            <li><a class="dropdown-item" href="{% url 'blog:signout' %}">Logout</a></li>
+            {% endif %}
           </ul>
         </li>
       </ul>
