@@ -20,7 +20,7 @@ from django.contrib.auth import (
 from django.contrib import messages
 from django.urls import reverse_lazy
 
-<<<<<<< HEAD
+
 from .forms import TestForm
 from .models import Post
 
@@ -45,7 +45,7 @@ class PostView(View):
     def get(self, request, pk):
         post = Post.objects.get(id=pk)
         return render(request, 'blog/post_view.html', {'post': post})
-=======
+
 
 #! for confirmation mail
 from .forms import UserForm
@@ -56,7 +56,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 #from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
->>>>>>> 425c034359d03deab241b4b9f78d48610ea9a5ef
+
 
 User = get_user_model()
 
