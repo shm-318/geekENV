@@ -16,6 +16,9 @@ urlpatterns = [
     path('signout/', views.Signout, name='signout'),
     path('signin/', views.Signin, name='signin'),
 
+    #for email confirmation
+    path('signup/', views.signup, name='signup'),
+    path('activate/<uidb64>/<token>',views.activate, name='activate'),
 
     #password reset
     path('password/reset/', PRView.as_view(), name='password_reset'),

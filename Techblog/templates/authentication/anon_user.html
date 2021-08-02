@@ -21,11 +21,6 @@
         </div>
     </nav>
 </header>
-    <p>Hiii.. {{ request.user.username }} !</p>
+    <p>{{ request.user.username }} !</p>
     <p>{{ request.user.email }}</p>
-    
-
-    <button><a href="{% url 'blog:signout' %}" style="text-decoration: none;">LogOut</a></button>
-
-
 {% endblock %}
