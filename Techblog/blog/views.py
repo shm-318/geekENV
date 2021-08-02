@@ -20,6 +20,31 @@ from django.contrib.auth import (
 from django.contrib import messages
 from django.urls import reverse_lazy
 
+from .forms import TestForm
+from .models import Post
+
+
+class PostUpdate(View):
+    def get(self, request, pk):
+        post = Post.objects.get(id=pk)
+        bound_form = TestForm(instance=post)
+        return render(request, 'blog/post_update.html', {'form': bound_form, 'post': post})
+
+    def post(self, request, pk):
+        post = Post.objects.get(id=pk)
+        bound_form = TestForm(request.POST, instance=post)
+
+        if bound_form.is_valid():
+            new_post = bound_form.save()
+            return redirect('blog:post_detail',pk)
+        return render(request, 'blog/post_update.html', {'form': bound_form, 'post': post})
+
+
+class PostView(View):
+    def get(self, request, pk):
+        post = Post.objects.get(id=pk)
+        return render(request, 'blog/post_view.html', {'post': post})
+
 User = get_user_model()
 
 # Create your views here.

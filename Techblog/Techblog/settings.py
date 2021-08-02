@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'bot',
+    #! For editor API
+    'django_editorjs_fields',
 
     #for auth
     
@@ -198,3 +200,6 @@ EMAIL_FILE_PATH = BASE_DIR / 'emails'
 
 #! For Custom User Models
 AUTH_USER_MODEL = 'blog.User'
+
+#* For editorJS version
+EDITORJS_VERSION = '2.22.1'

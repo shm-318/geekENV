@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from django.conf.urls import url
 from blog import views
 from .views import  PRView, PRDone, PRConfirm, PRComplete
@@ -15,6 +15,9 @@ urlpatterns = [
     #url(r'^login/',views.login,name="login"),
     path('signout/', views.Signout, name='signout'),
     path('signin/', views.Signin, name='signin'),
+    path('posts/<int:pk>/edit', views.PostUpdate.as_view(), name='post_edit'),
+    path('posts/<int:pk>', views.PostView.as_view(), name='post_detail'),
+   
 
 
     #password reset

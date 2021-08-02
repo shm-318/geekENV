@@ -27,4 +27,6 @@ class CustomUserAdmin(UserAdmin):
 
 admin.site.register(Contact)
 admin.site.register(User,CustomUserAdmin)
+admin.site.register(Post)
+
 
