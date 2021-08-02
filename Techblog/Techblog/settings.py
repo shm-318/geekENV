@@ -156,7 +156,7 @@ AUTHENTICATION_BACKENDS = (
  'allauth.account.auth_backends.AuthenticationBackend',
  )
 
-SITE_ID = 2
+SITE_ID = 3
 LOGIN_REDIRECT_URL = '/'
 
 
@@ -192,11 +192,11 @@ SOCIALACCOUNT_PROVIDERS = {
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
-#EMAIL_HOST_USER = 'surajvidya2018@gmail.com'
-#EMAIL_HOST_PASSWORD = ''
+EMAIL_HOST_USER = 'geekenv.help@gmail.com'
+EMAIL_HOST_PASSWORD = 'tqevdbgipajlculj'
 
-EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-EMAIL_FILE_PATH = BASE_DIR / 'emails'
+#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+#EMAIL_FILE_PATH = BASE_DIR / 'emails'
 
 #! For Custom User Models
 AUTH_USER_MODEL = 'blog.User'
