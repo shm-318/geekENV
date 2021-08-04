@@ -21,6 +21,32 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 
 
+from .forms import TestForm
+from .models import Post
+
+
+class PostUpdate(View):
+    def get(self, request, pk):
+        post = Post.objects.get(id=pk)
+        bound_form = TestForm(instance=post)
+        return render(request, 'blog/post_update.html', {'form': bound_form, 'post': post})
+
+    def post(self, request, pk):
+        post = Post.objects.get(id=pk)
+        bound_form = TestForm(request.POST, instance=post)
+
+        if bound_form.is_valid():
+            new_post = bound_form.save()
+            return redirect('blog:post_detail',pk)
+        return render(request, 'blog/post_update.html', {'form': bound_form, 'post': post})
+
+
+class PostView(View):
+    def get(self, request, pk):
+        post = Post.objects.get(id=pk)
+        return render(request, 'blog/post_view.html', {'post': post})
+
+
 #! for confirmation mail
 from .forms import UserForm
 from django.contrib.sites.shortcuts import get_current_site
@@ -30,6 +56,7 @@ from django.template.loader import render_to_string
 from .tokens import account_activation_token
 #from django.contrib.auth.models import User
 from django.core.mail import EmailMessage
+
 
 User = get_user_model()
 
