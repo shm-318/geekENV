@@ -1,0 +1,73 @@
+{% extends 'blog/about.html' %} {% load static %} 
+{% block title%}<title>Editor</title>{% endblock %}
+{% block js%}<script src="{% static 'js/home.js'%}" />{% endblock %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/editor.css' %}" />{% endblock %}
+{% block body_block %} 
+<div class="box">
+<div class="text">
+<form name="compForm" method="post">
+  <input type="hidden" name="myDoc" />
+  <div id="toolBar1">
+    <select class="icon"
+      onchange="formatType('fontsize',this[this.selectedIndex].value);this.selectedIndex=0;"
+    >
+      <option class="heading" selected>Font Size</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+    </select>
+    <span class="icon" onclick="formatType('bold')" id="bold">
+        <label for="bold" style="cursor:pointer"><i class="fas fa-bold"></i></label>
+    </span>
+    <span class="icon" onclick="formatType('italic')" id="italic">
+        <label for="italic" style="cursor:pointer"><i class="fas fa-italic"></i></label>
+    </span>
+    <span class="icon" onclick="formatType('underline')">
+        <label for="underline" style="cursor:pointer"><i class="fas fa-underline"></i></label>
+    </span> 
+    <span class="icon" onclick="formatType('underline')" id="left">
+        <label for="left" style="cursor:pointer"><i class="fas fa-align-left"></i></label>
+    </span> 
+    <span class="icon" onclick="formatType('underline')" id="right">
+        <label for="right" style="cursor:pointer"><i class="fas fa-align-right"></i></label>
+    </span> 
+    <span class="icon" onclick="formatType('underline')">
+        <label for="center" style="cursor:pointer"><i class="fas fa-align-center"></i></label>
+    </span>
+    <input
+      type="file"
+      accept="image/*"
+      name="image"
+      id="file"
+      onchange="loadFile(event)"
+      style="display: none"
+    />
+    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-link"></i></label>
+    <input
+      type="file"
+      accept="image/*"
+      name="image"
+      id="file"
+      onchange="loadFile(event)"
+      style="display: none"
+    />
+    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-code"></i></label>
+    <input
+      type="file"
+      accept="image/*"
+      name="image"
+      id="file"
+      onchange="loadFile(event)"
+      style="display: none"
+    />
+    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-image"></i></label>
+  </div>
+  <div id="textBox" contenteditable="true"><p></p></div>
+ </form>
+</div>
+</div>
+{% endblock %}

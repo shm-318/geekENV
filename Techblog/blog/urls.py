@@ -12,11 +12,11 @@ urlpatterns = [
     url(r'^contact/',views.contact,name="contact"),
     url(r'^about/',views.about,name="about"),
     url(r'^register/',views.register,name="register"),
+    url(r'^createblog/',views.createBlog,name="createblog"),
     #url(r'^login/',views.login,name="login"),
     path('signout/', views.Signout, name='signout'),
     path('signin/', views.Signin, name='signin'),
-    path('posts/<int:pk>/edit', views.PostUpdate.as_view(), name='post_edit'),
-    path('posts/<int:pk>', views.PostView.as_view(), name='post_detail'),
+    
    
 
     #for email confirmation
