@@ -25,6 +25,7 @@ urlpatterns = [
     url('',include('bot.urls')),
     path('accounts/', include('allauth.urls')),
     path('editorjs/', include('django_editorjs_fields.urls')),
+    path('ide/',include('ide.urls')),
 
     #for password reset if some non-solvable error comes
     #url(r'^', include('django.contrib.auth.urls')),
