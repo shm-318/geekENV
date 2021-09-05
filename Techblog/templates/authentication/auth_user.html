@@ -148,7 +148,7 @@
       </a>
 
       <a href="/" style="font-size: 2rem; padding-bottom: 20px;" class="username">
-       <b>Suraj kumar</b> 
+       <b>{{ user.username }}</b> 
       </a>
 
       <a href="/">
@@ -176,24 +176,25 @@
           <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false" style="padding-top: inherit;padding: inherit;">
 
-            <!-- User Profile Picture -->
+           
             {% if user.picture %}
             <img src="" class="rounded-circle z-depth-0">
             {% else %}
             <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
               class="rounded-circle z-depth-0">
             {% endif %}
-            <!-- User's Profile Picture End -->
+             
+             
 
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user__avatar">
 
-            <!-- Profile View Button -->
+            
             <a class="dropdown-item" href="{% url 'blog:profile_view' request.user.username %}">
               <span class="mr-3 fa fa-user-circle"></span>Profile
             </a>
 
-            <!-- Change Password Button -->
+            
             <a class="dropdown-item" href="">
               <span class="mr-3 fa fa-cog"></span>Change Password
             </a>
@@ -202,7 +203,7 @@
 
             <div class="dropdown-item">
 
-              <!-- Signout Button -->
+              
               <form method="POST" action="{% url 'blog:signout' %}">
                 {% csrf_token %}
                 <a href="javascript:;" onclick="parentNode.submit();" class="text-reset text-decoration-none">Sign
@@ -213,6 +214,7 @@
             </div>
           </div>
         </li>
+        
       </ul>
 
       <a class="navbar-brand" href="/">
@@ -238,23 +240,24 @@
 
 <div class="detail-container">
   <div class="detail-item">
-    Status <i class="fa fa-edit"></i>
+    Status 
   </div>
   <div class="detail-item">
-    college <i class="fa fa-edit"></i>
+    college 
   </div>
   <div class="detail-item">
-    Email <i class="fa fa-edit"></i>
+    Email 
   </div>
   <div class="detail-item">
-    website <i class="fa fa-edit"></i>
+    website 
   </div>
   <div class="detail-item">
-    country <i class="fa fa-edit"></i>
+    State 
   </div>
   <div class="detail-item">
-    Company <i class="fa fa-edit"></i>
+    country 
   </div>
+  
   
 </div>
 {% endblock %}

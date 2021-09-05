@@ -233,3 +233,26 @@ class PRComplete(PasswordResetCompleteView):
 
 def Yourbot(request):
     return render(request,'authentication/bot.html')
+
+
+# user blog view
+
+def Userblog(request):
+    template_name_auth = 'authentication/auth_user.html'
+    template_name_anon = 'authentication/anon_user.html'
+
+    def get(self, request, *args, **kwargs):
+        username = kwargs.get('username')
+
+        try:
+            user = User.objects.get(username=username)
+        except Exception as e:
+            return HttpResponse('<h1>This User does not exist.</h1>')
+
+        if username == request.user.username:
+            context = {'user': user}
+            return render(request, self.template_name_auth, context=context)
+        else:
+            context = {'user': user}
+            return render(request, self.template_name_anon, context=context)
+
