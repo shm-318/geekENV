@@ -4,19 +4,20 @@ from .forms import *
 from django.views.generic import View
 from .models import *
 from django.contrib.auth.views import (
-    PasswordResetView,
-    PasswordResetDoneView,
-    PasswordResetConfirmView,
-    PasswordResetCompleteView,
-    PasswordChangeView,
-    PasswordChangeDoneView,
-)
+                                            PasswordResetView,
+                                            PasswordResetDoneView,
+                                            PasswordResetConfirmView,
+                                            PasswordResetCompleteView,
+                                            PasswordChangeView,
+                                            PasswordChangeDoneView,
+                                        )
 from django.contrib.auth import (
-    authenticate,
-    login,
-    logout,
-    get_user_model,
-)
+                                    authenticate,
+                                    login,
+                                    logout,
+                                    get_user_model,
+                                )
+
 from django.contrib import messages
 from django.urls import reverse_lazy
 
@@ -47,16 +48,16 @@ def createBlog(request):
 def signup(request):
 
     if request.method == 'POST':
-        print("enter in post")
+        # print("enter in post")
         form = UserForm(request.POST)
         if form.is_valid():
-            print("enter at before mail")
+            # print("enter at before mail")
             user = form.save(commit=False)
             user.is_active = False
             user.save()
 
             current_site = get_current_site(request)
-            print(current_site.id)
+            # print(current_site.id)
             # for checking
             print(user, current_site.domain, urlsafe_base64_encode(
                 force_bytes(user.pk)), account_activation_token.make_token(user))
@@ -75,7 +76,7 @@ def signup(request):
             )
             email.send()
 
-            return HttpResponse('Please confirm your email address to complete the registration')
+            return render(request,'authentication/aftersendlinktomail.html')
         else:
             form = UserForm(request.POST)
             return render(request, 'authentication/register_s.html', {'form': form})
@@ -96,8 +97,8 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.is_active = True
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
-        # return redirect('home')
-        return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        return redirect('blog:signin')
+        #return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
 
@@ -121,6 +122,7 @@ class ProfileView(View):
             context = {'user': user}
             return render(request, self.template_name_anon, context=context)
 
+#sign in
 
 def Signin(request, *args, **kwargs):
 
@@ -133,8 +135,7 @@ def Signin(request, *args, **kwargs):
             email = user_obj.email
         except Exception as e:
             email = email_username
-        user = authenticate(
-            request, username=email_username, password=password)
+        user = authenticate(request, username=email_username, password=password)
 
         if user is None:
             messages.error(request, 'Invalid Login.', extra_tags="error")
@@ -146,18 +147,18 @@ def Signin(request, *args, **kwargs):
         return redirect('blog:profile_view', request.user.username)
     return render(request, 'blog/login.html')
 
-
+#Main page
 def IndexView(request):
     if request.user.is_authenticated:
         return redirect('blog:profile_view', request.user.username)
     return render(request, 'blog/lead.html')
 
-
+#signout
 def Signout(request):
     logout(request)
     return redirect('blog:index_view')
 
-
+#contact
 def contact(request):
     form1 = ContactForm()
 
@@ -169,11 +170,11 @@ def contact(request):
             return redirect('/')
     return render(request, 'blog/contact.html', context={'form1': form1})
 
-
+#about
 def about(request):
     return render(request, 'blog/about.html')
 
-
+#resistration of new user
 def register(request):
     email_unique = True
     password_match = True
@@ -207,6 +208,7 @@ def register(request):
             return render(request, "blog/register.html", {'email_unique': email_unique, 'password_match': password_match})
     return render(request, "blog/register.html", {'email_unique': email_unique, 'password_match': password_match})
 
+# forgot Password
 
 class PRView(PasswordResetView):
     email_template_name = 'authentication/password_reset_email.html'
@@ -225,3 +227,9 @@ class PRDone(PasswordResetDoneView):
 
 class PRComplete(PasswordResetCompleteView):
     template_name = 'authentication/password_reset_complete.html'
+
+
+# bot
+
+def Yourbot(request):
+    return render(request,'authentication/bot.html')

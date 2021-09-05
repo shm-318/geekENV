@@ -42,16 +42,16 @@
           <a class="nav-link active" aria-current="page" href="/" style="color:white">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/" style="color:white">Publish</a>
+          <a class="nav-link" href="{% url 'blog:createblog' %}" style="color:white">Publish</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:register' %}" style="color:white">Get Started</a>
+          <a class="nav-link" href="{% url 'blog:signup' %}" style="color:white">Get Started</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'run'%}" style="color:white">Compile and Run</a>
+          <a class="nav-link" href="{% url 'ide:runide' %}" style="color:white">Compile and Run</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#" style="color:white">Ask a Query</a>
+          <a class="nav-link" href="{% url 'blog:Bot' %}" style="color:white">Ask a Query</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
