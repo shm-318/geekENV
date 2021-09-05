@@ -2,6 +2,29 @@
 {% block title%}<title>geekENV</title>{% endblock %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/lead.css' %}" /> {% endblock %} 
 {% block body_block %}
+<style>
+.success{
+     list-style: none;
+     background-color: #2e6da4;
+     color: white;
+     box-shadow: 12px 12px 12px #e61c66;
+     text-align: center;
+ }
+</style>
+{% if messages %}
+        <ul class="messages" id="msg">
+               {% for message in messages %}
+                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+               {% endfor %}
+       </ul>
+       <script>
+    setTimeout(function(){
+        if ($('#msg').length > 0) {
+            $('#msg').remove();
+        }
+    }, 4000)    // 2000 millisecond
+</script>
+  {% endif %} 
 <div class="container">
   <div class="brand-logo">
     <div class="quote">

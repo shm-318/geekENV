@@ -4,6 +4,7 @@ from .forms import *
 from django.views.generic import View
 from .models import *
 from django.conf import settings
+from django.contrib import messages
 
 from django.contrib.auth.views import (
                                             PasswordResetView,
@@ -179,7 +180,9 @@ def contact(request):
             message = f"Hey There!\nA user named {name} Contacted us with the message:\n{query}\nContact details: {contact} \nEmail : {email} \n "
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email_from,]
+
             send_mail(subject,message,email_from,recipient_list)
+            messages.success(request, 'Query Submitted Successfully')
             return redirect('/')
     return render(request, 'blog/contact.html', context={'form1': form1})
 
