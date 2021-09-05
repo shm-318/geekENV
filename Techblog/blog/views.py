@@ -175,8 +175,8 @@ def contact(request):
             contact = request.POST['ContactNo']
             query = request.POST['Message']
             
-            subject = "Welcome to GFG World...Contact Us!"
-            message = f"Query From {name} \n Email : {email} \n Contact details: {contact} \n Message:\n{query}"
+            subject = f"Message from {name}"
+            message = f"Hey There!\nA user named {name} Contacted us with the message:\n{query}\nContact details: {contact} \nEmail : {email} \n "
             email_from = settings.EMAIL_HOST_USER
             recipient_list = [email_from,]
             send_mail(subject,message,email_from,recipient_list)
