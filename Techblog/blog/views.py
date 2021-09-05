@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from .forms import *
 from django.views.generic import View
 from .models import *
+from django.conf import settings
+
 from django.contrib.auth.views import (
                                             PasswordResetView,
                                             PasswordResetDoneView,
@@ -34,7 +36,7 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 #from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage, message, send_mail
 
 
 User = get_user_model()
@@ -167,6 +169,17 @@ def contact(request):
 
         if form1.is_valid():
             form1.save()
+            
+            name = request.POST['Name']
+            email = request.POST['Email']
+            contact = request.POST['ContactNo']
+            query = request.POST['Message']
+            
+            subject = "Welcome to GFG World...Contact Us!"
+            message = f"Query From {name} \n Email : {email} \n Contact details: {contact} \n Message:\n{query}"
+            email_from = settings.EMAIL_HOST_USER
+            recipient_list = [email_from,]
+            send_mail(subject,message,email_from,recipient_list)
             return redirect('/')
     return render(request, 'blog/contact.html', context={'form1': form1})
 
@@ -233,3 +246,4 @@ class PRComplete(PasswordResetCompleteView):
 
 def Yourbot(request):
     return render(request,'authentication/bot.html')
+
