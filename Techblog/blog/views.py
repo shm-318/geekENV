@@ -147,7 +147,7 @@ def Signin(request, *args, **kwargs):
         login(request, user)
 
         #messages.success(request, 'Thanks for Login.', extra_tags='success')
-        return redirect('blog:profile_view', request.user.username)
+        return redirect('blog:blog_view', request.user.username)
     return render(request, 'blog/login.html')
 
 #Main page
@@ -252,9 +252,9 @@ def Yourbot(request):
 
 # user blog view
 
-def Userblog(request):
-    template_name_auth = 'authentication/auth_user.html'
-    template_name_anon = 'authentication/anon_user.html'
+class BlogView(View):
+    template_name_auth = 'authentication/auth_blog.html'
+    template_name_anon = 'authentication/anon_blog.html'
 
     def get(self, request, *args, **kwargs):
         username = kwargs.get('username')
