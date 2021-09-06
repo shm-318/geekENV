@@ -1,11 +1,12 @@
-var oDoc;
-function initiateDocs() {
-  oDoc = document.getElementById("textBox");
+function makeBold(sel)
+{
+   document.execCommand('bold');
 }
-function formatType(sCmd, sValue) {
-  document.execCommand(sCmd, false, sValue); oDoc.focus();
+function makeItalic(sel)
+{
+   document.execCommand('italic');
 }
-var loadFile = function(event) {
-  oDoc.focus();
-  formatType("insertImage", URL.createObjectURL(event.target.files[0]));
-};
+function makeUnderlined(sel)
+{
+   document.execCommand('underline');
+}
