@@ -7,10 +7,13 @@ from ide.views import runCode
 
 app_name='blog'
 urlpatterns = [
+
     url(r'^$',views.IndexView,name='index_view'),
-    #index page
+
+    #user
     path('home/profile/<str:username>/',views.ProfileView.as_view(),name="profile_view"),
     path('home/blog/<str:username>/',views.BlogView.as_view(),name="blog_view"),
+    path('home/profile/<str:username>/edit/', views.ProfileEditView.as_view(), name='profile_edit_view'),
 
     url(r'^contact/',views.contact,name="contact"),
     url(r'^about/',views.about,name="about"),

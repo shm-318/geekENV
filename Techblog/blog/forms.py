@@ -1,28 +1,9 @@
 from django import forms
 from .models import *
 from django.contrib.auth import get_user_model
-from blog.models import User
-from django_editorjs_fields import EditorJsWidget
+#from blog.models import User
 
-from .models import Post
-
-
-class TestForm(forms.ModelForm):
-    # body_editorjs = EditorJsWidget(config={"minHeight": 100, 'autofocus': False})
-
-    # inputs = forms.JSONField(widget=EditorJsWidget())
-    # inputs.widget.config = {"minHeight": 100}
-
-    class Meta:
-        model = Post
-        exclude = []
-        widgets = {
-            'body_editorjs': EditorJsWidget(config={'minHeight': 100}),
-            'body_textfield': EditorJsWidget(plugins=[
-                "@editorjs/image",
-                "@editorjs/header"
-            ], config={'minHeight': 100})
-        }
+User = get_user_model()
 
 class ContactForm(forms.ModelForm):
     
@@ -50,3 +31,32 @@ class CustomUserChangeForm(UserChangeForm):
     class Meta:
         model = get_user_model()
         fields = ('full_name', 'email', 'username',)
+
+
+#user edit form
+class UserEditForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = (
+            'picture_url',
+            'full_name',
+            'username',
+            'email',
+            'status',
+            'college',
+            'country',
+            'website',
+            'phone_number',
+            'gender',
+            
+            )
+        labels = {
+            
+            'phone_number': 'Phone'
+        }
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.fields:
+            self.fields[field].widget.attrs.update({'class': 'form-control form-control-sm'})
