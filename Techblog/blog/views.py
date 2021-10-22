@@ -252,6 +252,9 @@ class PRComplete(PasswordResetCompleteView):
 def Yourbot(request):
     return render(request,'authentication/bot.html')
 
+
+
+
 # user blog view
 
 class BlogView(View):
@@ -288,6 +291,11 @@ class ProfileEditView(View):
         form = self.form_class(instance=request.user)
         context = {'form': form}
         return render(request, self.template_name, context=context)
+
+
+
+
+
 
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES, instance=request.user)

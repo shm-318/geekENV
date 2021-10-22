@@ -15,6 +15,56 @@
     integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
   <link rel="preconnect" href="https://fonts.gstatic.com" />
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<style>
+		/* * {
+			padding: 0;
+			margin: 0;
+			box-sizing: border-box;
+		} */
+		button {
+			height: 60px;
+			width: 60px;
+			background-color: rgba(0, 0, 0, 0.795);
+			border: none;
+			cursor: pointer;
+			border-radius: 5px;
+			
+		}
+		#dialogflow{
+			
+			position: fixed;
+			left: 73%;
+			bottom: 15%;
+			border: 2px solid black;
+			background-color: black;
+			border-radius: 5px;
+			display: none;
+      z-index: 100;
+		}
+		
+		#togglebutton
+		{
+			position: fixed;
+			left: 92%;
+			bottom: 5%;
+			border-radius: 5px;
+		}
+
+		#togglebutton:hover{
+			background-color: #000;
+		}
+
+		#div1{
+			background-color:#8888ff;
+			display:block;
+			height:0px;
+			overflow:hidden;
+			border: 1px solid #000;
+		}
+		
+	</style>
 </head>
 
 <body>
@@ -69,6 +119,18 @@
     </div>
   </nav>
 
+  <div id="dialogflow">
+    <iframe id="frame"  allow="microphone;" width="350"
+      src="https://console.dialogflow.com/api-client/demo/embedded/f820f653-1eb7-4940-9294-0c7ac2373638">
+    </iframe>
+    
+  </div>
+  <div id="togglebutton">
+    <button onclick="bottoggle()">
+      <i class="material-icons" style="color: #f35d27;font-size:35px; margin-top: 5px;"><span id="toggletext">chat_bubble</span></i>
+    </button>
+  </div>
+
   {% block content %} {% endblock %}
 
   <div class="footer">All rights reserved &nbsp;&nbsp;geekENV Inc©</div>
@@ -85,6 +147,37 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+    
 </body>
+<script>
+	function bottoggle() {
+		var x = document.getElementById("dialogflow");
+		var y = document.getElementById("toggletext");
+		var frameD = document.getElementById("frame");
+
+		if(x.style.display == "block") 
+		{
+			y.innerHTML= "chat_bubble";
+
+			x.style.display = "none";
+			x.style.color= "#f35d27";
+
+			frameD.style.height=0;
+			
+		} 
+		else 
+		{
+			y.innerHTML="power_settings_new";
+
+			x.style.display = "block";
+			x.style.color="red";
+
+			frameD.style.height="550px";
+			
+		}
+	}
+
+</script>
 
 </html>
