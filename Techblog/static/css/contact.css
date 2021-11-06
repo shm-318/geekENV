@@ -63,7 +63,7 @@ background: linear-gradient(to right, #FD746C, #2C3E50); /* W3C, IE 10+/ Edge, F
 }
 .footer {
   position:relative;
-  height: 25px;
+  height: 165px;
   background-color:black;
   text-align: center;
   color: white;
@@ -73,7 +73,10 @@ background: linear-gradient(to right, #FD746C, #2C3E50); /* W3C, IE 10+/ Edge, F
   margin-bottom: 0px;
   margin-top: 10px;
 }
-
+.footer>div>a{
+  text-decoration: none;
+  margin-left: 10px;
+}
 @media only screen and (max-width:768px)
 {
     .title{

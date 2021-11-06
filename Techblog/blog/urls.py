@@ -3,13 +3,14 @@ from django.urls import path,include
 from django.conf.urls import url
 from blog import views
 from .views import  PRView, PRDone, PRConfirm, PRComplete
-
+from ide.views import runCode
 
 app_name='blog'
 urlpatterns = [
     url(r'^$',views.IndexView,name='index_view'),
     #index page
-    path('home/<str:username>/',views.ProfileView.as_view(),name="profile_view"),
+    path('home/profile/<str:username>/',views.ProfileView.as_view(),name="profile_view"),
+    path('home/blog/<str:username>/',views.BlogView.as_view(),name="blog_view"),
 
     url(r'^contact/',views.contact,name="contact"),
     url(r'^about/',views.about,name="about"),
@@ -33,5 +34,8 @@ urlpatterns = [
     path('password/reset/complete/', PRComplete.as_view() , name='password_reset_complete'),
 
     #bot
-    path('YourBot',views.Yourbot,name='Bot')
+    path('YourBot',views.Yourbot,name='Bot'),
+
+    #ide
+    path('ide',runCode,name='ideforyou')
 ]

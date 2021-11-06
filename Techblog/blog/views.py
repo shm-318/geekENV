@@ -147,7 +147,7 @@ def Signin(request, *args, **kwargs):
         login(request, user)
 
         #messages.success(request, 'Thanks for Login.', extra_tags='success')
-        return redirect('blog:profile_view', request.user.username)
+        return redirect('blog:blog_view', request.user.username)
     return render(request, 'blog/login.html')
 
 #Main page
@@ -249,4 +249,26 @@ class PRComplete(PasswordResetCompleteView):
 
 def Yourbot(request):
     return render(request,'authentication/bot.html')
+
+# user blog view
+
+class BlogView(View):
+    template_name_auth = 'authentication/auth_blog.html'
+    template_name_anon = 'authentication/anon_blog.html'
+
+    def get(self, request, *args, **kwargs):
+        username = kwargs.get('username')
+
+        try:
+            user = User.objects.get(username=username)
+        except Exception as e:
+            return HttpResponse('<h1>This User does not exist.</h1>')
+
+        if username == request.user.username:
+            context = {'user': user}
+            return render(request, self.template_name_auth, context=context)
+        else:
+            context = {'user': user}
+            return render(request, self.template_name_anon, context=context)
+
 

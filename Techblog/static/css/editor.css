@@ -2,50 +2,90 @@
   cursor: pointer;
 }
 
-body{
-    background: #ADA996;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
+body {
+  background: #b79891; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #94716b,
+    #b79891
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #94716b,
+    #b79891
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 img.intLink {
   border: 0;
 }
 .navbar-nav > li {
-    padding-left: 40px;
-    padding-right: 40px;
-  }
+  padding-left: 40px;
+  padding-right: 40px;
+}
 #toolBar1 select {
   font-size: 1rem;
 }
 #textBox {
   width: auto;
-  height: 40vw;
+  height: 30vw;
   border: 3px #000000 solid;
-  background-color:white;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  word-wrap: normal;
+  background-color: white;
   padding: 12px;
   margin-top: 5px;
+}
+#titleBox,
+#intro {
+  width: auto;
+  height: 3vw;
+  border: 3px #000000 solid;
+  background-color: white;
+  padding: 12px;
+  margin-top: 5px;
+}
+div:empty:before {
+  content:attr(data-text);
+  color:gray
 }
 .box {
   width: 100vw;
   height: 100vh;
- 
+}
+#sbmt
+{
+  position:absolute;
+  right: 30px;
+  margin-top: 10px;
+
+}
+#display_image {
+  width: 300px;
+  height: 200px;
+  border: 1px solid black;
+  display: block;
+  background-position: center;
+  background-size: cover;
 }
 .text {
   margin-top: 5%;
   border: 2px solid black;
+  background: #dbdbdb;
   border-radius: 20px;
   margin-left: 15%;
   margin-right: 15%;
   padding: 2%;
   height: 45vw;
+  position: relative;
 }
 .footer {
-  position: relative;
-  height: 25px;
-  background-color: black;
+  position:relative;
+  height: 165px;
+  background-color:black;
   text-align: center;
   color: white;
   bottom: 0px;
@@ -54,26 +94,34 @@ img.intLink {
   margin-bottom: 0px;
   margin-top: 10px;
 }
-.icon
-{
-    margin-left: 5px;
-    margin-right: 5px;
+.footer>div>a{
+  text-decoration: none;
+  margin-left: 10px;
+}
+.icon {
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
-@media only screen and (max-width:768px)
-{
-    .text{
-        margin-left: 2%;
-        margin-right: 2%;
-        height: 90vh;
-    }
-    #textBox
-    {
-        height: 75vh;
-    }
-    .box
-    {
-        margin: 0;
-    }
-    
+
+@media only screen and (max-width: 768px) {
+  .text {
+    margin-left: 2%;
+    margin-right: 2%;
+    height: 90vh;
+  }
+  #titleBox,#intro
+  {
+    height: 8vh;
+  }
+  #textBox {
+    height: 55vh;
+  }
+  .box {
+    margin: 0;
+  }
+}
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
 }

@@ -17,6 +17,23 @@ body{
   align-items: center;
   padding: 10px;
 }
+.footer {
+  position:relative;
+  height: 165px;
+  background-color:black;
+  text-align: center;
+  color: white;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
+  margin-bottom: 0px;
+  margin-top: 10px;
+}
+.footer>div>a{
+  text-decoration: none;
+  margin-left: 10px;
+}
+
 .container{
   max-width: 700px;
   width: 100%;
@@ -151,16 +168,4 @@ form .user-details .input-box{
 .navbar-nav > li {
   padding-left: 40px;
   padding-right: 40px;
-}
-.footer {
-  position:relative;
-  height: 25px;
-  background-color:black;
-  text-align: center;
-  color: white;
-  bottom: 0px;
-  left: 0px;
-  right: 0px;
-  margin-bottom: 0px;
-  margin-top: 10px;
 }
