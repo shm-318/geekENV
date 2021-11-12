@@ -22,36 +22,19 @@
     <button type="button" onclick=makeBold(window.getSelection().toString())><i class="fas fa-bold"></i></button>
     <button type="button" onclick=makeItalic(window.getSelection().toString())><i class="fas fa-italic"></i></button>
     <button type="button" onclick=makeUnderlined(window.getSelection().toString())><i class="fas fa-underline"></i></button>
-   
-    <input
-      type="file"
-      accept="image/*"
-      name="image"
-      id="file"
-      onchange="loadFile(event)"
-      style="display: none"
-    />
-    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-link"></i></label>
-    <input
-      type="file"
-      accept="image/*"
-      name="image"
-      id="file"
-      onchange="loadFile(event)"
-      style="display: none"
-    />
-    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-code"></i></label>
-    <input
-      type="file"
-      accept="image/*"
-      name="image"
-      id="file"
-      onchange="loadFile(event)"
-      style="display: none"
-    />
-    <label for="file" style="cursor: pointer;" class="icon"><i class="fas fa-image"></i></label>
+    <button type="button" onclick=addH()><b>H<sub>1</sub></b></i></button>
+    <button type="button" onclick=addh()><b>H<sub>2</sub></b></i></button>
+    <button type="button" onclick=unorderedList()><i class="fas fa-list-ul"></i></button>
+    <button type="button" onclick=orderedList()><i class="fas fa-list-ol"></i></button>
+    <button type="button" onclick=addLink()><i class="fas fa-link"></i></button>
+    <label for="image_input"><i class="fas fa-image"></i></label>
+    <input type="file" id="image_input" style="display:none">
+    <button type="button" onclick=addCode()><i class="fas fa-code"></i></button>  
   </div>
+  <div id="titleBox" contenteditable="true" data-text="Title of the Blog"></div>
+  <div id="intro" contenteditable="true" data-text="A brief one liner about the Blog"></div>
   <div id="textBox" contenteditable="true"><p></p></div>
+  <button type="submit" id="sbmt" class="btn btn-primary">Submit this blog</button?
  </form>
 </div>
 </div>

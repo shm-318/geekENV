@@ -5,5 +5,5 @@ app_name = 'ide'
 urlpatterns = [
     path('',views.index),
     #url(r'^run/$', views.runCode, name='run'),
-    path('run/',views.runCode,name='runide'),
+    #path('run/',views.runCode,name='runide'),
 ]

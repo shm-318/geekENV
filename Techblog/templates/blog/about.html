@@ -5,7 +5,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {% block title %}<title>About Us</title>{% endblock %}
+    {% block title %}
+    <title>About Us</title>
+    {% endblock %}
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -29,47 +31,106 @@
     />
   </head>
   <body>
-<div class="all">
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color:white">geekENV</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/" style="color:white">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:createblog' %}" style="color:white">Publish</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:signup' %}" style="color:white">Get Started</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'ide:runide' %}" style="color:white">Compile and Run</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:Bot' %}" style="color:white">Ask a Query</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
-            More
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'blog:about' %}">About</a></li>
-            <li><a class="dropdown-item" href="{% url 'blog:contact' %}">Contact Us</a></li>
-            {% if request.user.is_authenticated %}
-            <li><a class="dropdown-item" href="{% url 'blog:signout' %}">Logout</a></li>
-            {% endif %}
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-    {% block body_block %}
+    <div class="all">
+      <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="color: white">geekENV</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNavDropdown"
+            aria-controls="navbarNavDropdown"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="/"
+                  style="color: white"
+                  >Home</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'blog:createblog' %}"
+                  style="color: white"
+                  >Publish</a
+                >
+              </li>
+              {% if not request.user.is_authenticated %}
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'blog:signup' %}"
+                  style="color: white"
+                  >Get Started</a
+                >
+              </li>
+              {% endif %}
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'blog:ideforyou' %}"
+                  style="color: white"
+                  >Compile and Run</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  href="{% url 'blog:Bot' %}"
+                  style="color: white"
+                  >Ask a Query</a
+                >
+              </li>
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="navbarDropdownMenuLink"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                  style="color: white"
+                >
+                  More
+                </a>
+                <ul
+                  class="dropdown-menu"
+                  aria-labelledby="navbarDropdownMenuLink"
+                >
+                  <li>
+                    <a class="dropdown-item" href="{% url 'blog:about' %}"
+                      >About</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'blog:contact' %}"
+                      >Contact Us</a
+                    >
+                  </li>
+                  {% if request.user.is_authenticated %}
+                  <li>
+                    <a class="dropdown-item" href="{% url 'blog:signout' %}"
+                      >Logout</a
+                    >
+                  </li>
+                  {% endif %}
+                </ul>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      {% block body_block %}
       <div class="jumbotron">
         <div
           class="title"
@@ -109,52 +170,88 @@
           >
             <b>Developers and Founders</b>
           </div>
-         <div class="develop">
-            <div class="card" style="width: 18rem">
-              <img class="card-img-top" src="{% static 'skd.jpg'%}" />
-              <div class="card-body">
-                <h5 class="card-title">Sonu Kumar Das</h5>
-                <p class="card-text">
-                  Being an optimistic person, Sonu aims to keep the developer community growing exponetially. He has a good exeperience in ML as well.
-                </p>
-                <span class="social">
-                <a href="#" ><i class="fab fa-github fa-3x" style="color:black"></i></a> <a href="#" ><i class="fas fa-envelope fa-3x" style="color:red"></i></a> <a href="#" ><i class="fab fa-twitter fa-3x"></i></a>
-               </span>
+          <div class="develop">
+            <div class="container" style="width: 18rem;height:30rem">
+              <div class="cover-photo">
+                <img
+                  src="{% static 'skd.jpg'%}"
+                  class="profile"
+                />
+              </div>
+              <div class="profile-name">Sonu Kumar Das</div>
+              <p class="about">
+                An ethusiastic and avid developer with an aim of achieving epitome of success for himself and the geekENV team, Sonu is the guy every team looks for. He has a good exposure in domains like Web development and machine learning.   
+              </p>
+              <br>
+              <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fas fa-globe"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-twitter"></i>
               </div>
             </div>
-            <div class="card" style="width: 18rem">
-              <img class="card-img-top" src="{% static 'suraj.jpg'%}" />
-              <div class="card-body">
-                <h5 class="card-title">Suraj Kumar</h5>
-                <p class="card-text">
-                  Suraj is a passionate developer and a cheerful guy. He aims working on developing technologies. He also holds a good experience in ML.<br>
-                  &nbsp;<br>
-                </p>
-                <span class="social">
-                <a href="#" ><i class="fab fa-github fa-3x" style="color:black"></i></a> <a href="#" ><i class="fas fa-envelope fa-3x" style="color:red"></i></a> <a href="#" ><i class="fab fa-twitter fa-3x"></i></a>
-               </span>
+            <div class="container" style="width: 18rem;height:30rem">
+              <div class="cover-photo">
+                <img
+                  src="{% static 'suraj.jpg'%}"
+                  class="profile"
+                />
+              </div>
+              <div class="profile-name">Suraj Kumar</div>
+              <p class="about">
+                A person enriched with great development and problem solving skills and a definite goal always in mind, Suraj is the person a team needs for getting their progress always on track. His experience is in domains like Machine learning and Web development.
+              </p>
+              <br>
+              <div>
+               <i class="fab fa-facebook-f"></i>
+                <i class="fas fa-globe"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-twitter"></i>
               </div>
             </div>
-            <div class="card" style="width: 18rem;height:auto">
-              <img class="card-img-top" src="{% static 'myimg (1).jpg'%}" />
-              <div class="card-body">
-                <h5 class="card-title">Shivam Mishra</h5>
-                <p class="card-text" style="font-size:14.2px">
-                  <b>"A majority of World's problems can be solved by an effiecient use of Tech"</b> &nbsp;With this motto in mind, Shivam aims betterment of the society with technologies using his problem solving skills.
-                </p>
-               <span class="social">
-                <a href="#" ><i class="fab fa-github fa-3x" style="color:black"></i></a> <a href="#" ><i class="fas fa-envelope fa-3x" style="color:red"></i></a> <a href="#" ><i class="fab fa-twitter fa-3x"></i></a>
-               </span>
+            <div class="container" style="width: 18rem;height:30rem">
+              <div class="cover-photo">
+                <img
+                  src="{% static 'myimg (1).jpg'%}"
+                  class="profile"
+                />
+              </div>
+              <div class="profile-name">Shivam Mishra</div>
+              <p class="about">
+              A profound developer and one of the founders of the geekENV, Shivam aims the coding community to achieve the new heights and that's the principle on which geekENV's foundation has been laid on. His domains of interest are Web Technologies and Machine Learning.
+              </p>
+              <div>
+                <i class="fab fa-facebook-f"></i>
+                <i class="fas fa-globe"></i>
+                <i class="fab fa-github"></i>
+                <i class="fab fa-twitter"></i>
               </div>
             </div>
+            
+            
           </div>
         </div>
       </div>
-    {% endblock %}
+      {% endblock %}
 
-      <div class="footer">All rights reserved &nbsp;&nbsp;geekENV Inc©</div>
+      <div class="footer"><h5>All rights reserved<br>geekENV Inc©</h5>
+      <div><a href="#">Home</a><a href="#">About</a><a href="#">Publish</a><a href="#">Contact</a></div>
+      <div>
+                <i class="fab fa-facebook-f fa-2x" style="margin:10px"></i>
+                <i class="fas fa-envelope fa-2x" style="margin:10px"></i>
+                <i class="fab fa-github fa-2x" style="margin:10px"></i>
+                <i class="fab fa-twitter fa-2x" style="margin:10px"></i>
+              </div>
+      
+              Made with <i class="fas fa-heart"></i> in India
+      </div>
+      
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
     <!---Put any other JS file below-->
   </body>
 </html>
