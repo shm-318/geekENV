@@ -25,8 +25,7 @@ from django.contrib import messages
 from django.urls import reverse_lazy
 
 
-from .forms import TestForm
-from .models import Post
+
 
 
 #! for confirmation mail
@@ -117,6 +116,9 @@ class ProfileView(View):
             user = User.objects.get(username=username)
         except Exception as e:
             return HttpResponse('<h1>This User does not exist.</h1>')
+
+        #set picture_url
+
 
         if username == request.user.username:
             context = {'user': user}
@@ -250,6 +252,9 @@ class PRComplete(PasswordResetCompleteView):
 def Yourbot(request):
     return render(request,'authentication/bot.html')
 
+
+
+
 # user blog view
 
 class BlogView(View):
@@ -262,7 +267,7 @@ class BlogView(View):
         try:
             user = User.objects.get(username=username)
         except Exception as e:
-            return HttpResponse('<h1>This User does not exist.</h1>')
+            return HttpResponse('<h1>This User blog does not exist.</h1>')
 
         if username == request.user.username:
             context = {'user': user}
@@ -272,3 +277,35 @@ class BlogView(View):
             return render(request, self.template_name_anon, context=context)
 
 
+#profile edit
+class ProfileEditView(View):
+    template_name = 'authentication/profile_edit.html'
+    form_class = UserEditForm
+
+    def get(self, request, *args, **kwargs):
+        username = kwargs.get('username')
+
+        if username != request.user.username:
+            return HttpResponse('<h1>This page does not exist.</h1>')
+
+        form = self.form_class(instance=request.user)
+        context = {'form': form}
+        return render(request, self.template_name, context=context)
+
+
+
+
+
+
+    def post(self, request, *args, **kwargs):
+        form = self.form_class(request.POST, request.FILES, instance=request.user)
+
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Saved your details in a safe place.')
+            return redirect('blog:profile_edit_view', request.user.username)
+        else:
+            for field in form.errors:
+                form[field].field.widget.attrs['class'] += ' is-invalid'
+            context = {'form': form}
+            return render(request, self.template_name, context=context)

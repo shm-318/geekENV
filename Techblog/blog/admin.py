@@ -19,14 +19,14 @@ class CustomUserAdmin(UserAdmin):
 
         )
     fieldsets = (
-        ('Personal Details', {'fields': ('email', 'full_name', 'username', 'picture')}),
+        ('Personal Details', {'fields': ('email', 'full_name', 'username', 'picture_url')}),
         ('Permissions', {'fields': ('is_staff', 'is_active')}),
-        ('Optional', {'fields': ('phone_number','gender')}),
+        ('Optional', {'fields': ('status','website','college','country','phone_number','gender')}),
         )
 # Register your models here.
 
 admin.site.register(Contact)
 admin.site.register(User,CustomUserAdmin)
-admin.site.register(Post)
+
 
 

@@ -1,5 +1,6 @@
-{% extends 'authentication/base.html' %} {% load static %} {% block extra_head
-%}
+{% extends 'authentication/base.html' %} 
+{% load static %} 
+{% block extra_head %}
 
 <link href="{% static 'img/user-profile-avtr-2.png' %}" rel="icon" />
 <link rel="stylesheet" type="text/css" href="{% static 'css/authentication/main.css' %}" />
@@ -138,7 +139,10 @@
     }
   }
 </style>
-{% endblock %} {% block content %}
+{% endblock %} 
+
+
+{% block content %}
 
 <header class="sticky-top" style="z-index: 0;" >
   <nav class="navbar" >
@@ -169,7 +173,7 @@
         <li class="nav-item dropdown ml-2">
           <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false" style="padding-top: inherit; padding: inherit">
-            {% if user.picture %}
+            {% if user.picture_url %}
             <img src="" class="rounded-circle z-depth-0" />
             {% else %}
             <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
