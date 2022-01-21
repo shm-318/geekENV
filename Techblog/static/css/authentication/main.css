@@ -112,7 +112,7 @@ body {
 }
 .footer {
   position:relative;
-  height: 25px;
+  height: 165px;
   background-color:black;
   text-align: center;
   color: white;
@@ -121,4 +121,8 @@ body {
   right: 0px;
   margin-bottom: 0px;
   margin-top: 10px;
+}
+.footer a
+{
+    margin: 2px;
 }
