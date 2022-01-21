@@ -143,33 +143,18 @@
 
 {% block content %}
 
-<<<<<<< HEAD
-<header class="sticky-top" style="z-index: 0;">
-  <nav class="navbar" >
-=======
 <header class="sticky-top" style="z-index: 0">
   <nav class="navbar">
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
     <div class="container">
       <a class="navbar-brand inmobile" href="/">
         <img src="{% static 'img/techblogonlylogo.png' %}" class="nav__logo" style="height: 2.5rem; width: 2.5rem" />
       </a>
 
-<<<<<<< HEAD
-      <a href="{% url 'blog:blog_view' user.username %}" style="font-size: 2rem; padding-bottom: 20px;" class="username">
-       <b>{{ user.username }}</b> 
-      </a>
-
-      <a href="{% url 'blog:profile_view' user.username %}">
-        About
-      </a>
-=======
       <a href="{% url 'blog:blog_view' user.username %}" style="font-size: 2rem; padding-bottom: 20px" class="username">
         <b>{{ user.username }}</b>
       </a>
 
       <a href="{% url 'blog:profile_view' user.username %}"> About </a>
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
 
       <div class="search__input m-auto d-none d-md-block">
         <!-- Form to search Users -->
@@ -186,49 +171,23 @@
         <!-- Dropdown for more menu -->
         <li class="nav-item dropdown ml-2">
           <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
-<<<<<<< HEAD
-            aria-expanded="false" style="padding-top: inherit;padding: inherit;">
-
-           
-            {% if user.picture %}
-            <img src="" class="rounded-circle z-depth-0">
-=======
             aria-expanded="false" style="padding-top: inherit; padding: inherit">
             {% if user.picture_url %}
             <img src="" class="rounded-circle z-depth-0" />
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
             {% else %}
             <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
               class="rounded-circle z-depth-0" />
             {% endif %}
-<<<<<<< HEAD
-             
-             
-
           </a>
           <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user__avatar">
-
-            
-=======
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user__avatar">
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
             <a class="dropdown-item" href="{% url 'blog:profile_view' request.user.username %}">
               <span class="mr-3 fa fa-user-circle"></span>Profile
             </a>
 
-<<<<<<< HEAD
-            <a class="dropdown-item" href="{% url 'blog:profile_view' request.user.username %}">
-              <span class="mr-3 fa fa-user-circle"></span>Edit Profile
-            </a>
-
-            
-=======
             <a class="dropdown-item" href="{% url 'blog:profile_edit_view' request.user.username %}">
               <span class="mr-3 fa fa-user-circle"></span>Edit Profile
             </a>
 
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
             <a class="dropdown-item" href="">
               <span class="mr-3 fa fa-cog"></span>Change Password
             </a>
@@ -236,11 +195,6 @@
             <div class="dropdown-divider"></div>
 
             <div class="dropdown-item">
-<<<<<<< HEAD
-
-              
-=======
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
               <form method="POST" action="{% url 'blog:signout' %}">
                 {% csrf_token %}
                 <a href="javascript:;" onclick="parentNode.submit();" class="text-reset text-decoration-none">Sign
@@ -274,34 +228,11 @@
 </div>
 
 <div class="detail-container">
-<<<<<<< HEAD
-  <div class="detail-item">
-    Status 
-  </div>
-  <div class="detail-item">
-    college 
-  </div>
-  <div class="detail-item">
-    Email 
-  </div>
-  <div class="detail-item">
-    website 
-  </div>
-  <div class="detail-item">
-    State 
-  </div>
-  <div class="detail-item">
-    country 
-  </div>
-  
-  
-=======
   <div class="detail-item">Status</div>
   <div class="detail-item">college</div>
   <div class="detail-item">Email</div>
   <div class="detail-item">website</div>
   <div class="detail-item">State</div>
   <div class="detail-item">country</div>
->>>>>>> 659cf317b4a2bb566b73a06abe187d1ecfa9aa34
 </div>
 {% endblock %}
