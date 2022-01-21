@@ -1,135 +1,91 @@
+{% extends 'authentication/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous" />
-    <link rel="stylesheet" href="{% static 'css/register.css' %}">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   </head>
-<body>
-<div class="nav-menu">
-<nav class="navbar navbar-expand-lg navbar-light bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#" style="color:white">Techblog</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/" style="color:white">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/" style="color:white">Publish</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'blog:register' %}" style="color:white">Get Started</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:white">Compile and Run</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" style="color:white">Ask a Query</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color:white">
-            More
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <li><a class="dropdown-item" href="{% url 'blog:about' %}">About</a></li>
-            <li><a class="dropdown-item" href="{% url 'blog:contact' %}">Contact Us</a></li>
-            <li><a class="dropdown-item" href="#">Logout</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-</div>
-<div class="all">
-  <div class="container">
-    <div class="title">Registration</div>
-    {% if form.non_field_errors %}
-    <div class="alert alert-danger" role="alert">
-        {{ form.non_field_errors }}
-    </div>
-    {% endif%}
-    <div class="content">
-      <form method="POST">
-        {% csrf_token %}
-        <div class="user-details">
-          <div class="input-box">
-            <span class="details">Full Name</span>
-            <input type="text" placeholder="Enter your name" name="full_name" required>
-            <div class="invalid-feedback">
-              {{ form.full_name.errors }}
+
+
+{% block extra_head %}
+
+<title>Register</title>
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/Register_extend.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/signup.css' %}">
+
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row">
+        <div class="col-sm-12 my-auto">
+            <div class="text-center card px-5 mx-auto signup__card">
+                <img src="{% static 'img/instalogo.png' %}" class="insta__logo mt-4 mb-3 mx-auto">
+                <div class="signup">
+                    <p class="signup__card__text">Sign up to see photos and videos from your friends.</p>
+                    <div class="my-4 mx-auto text-center">
+                        <button class="btn btn-sm auth__btn">Log in with Facebook</button>
+                    </div>
+                    <div class="text-center my-4">
+                        <p class="or__text">OR</p>
+                    </div>
+                    <div>
+                        {% if form.non_field_errors %}
+                        <div class="alert alert-danger" role="alert">
+                            {{ form.non_field_errors }}
+                        </div>
+                        {% endif%}
+                    </div>
+                    <div class="signup__form mb-3">
+                        <form method="POST">
+                            {% csrf_token %}
+                            <div class="my-1 form__input">
+                                <input id="id_email" type="email" name="email" placeholder="Email"
+                                    class="form-control {% if form.email.errors %}is-invalid{% endif %}">
+                                <div class="invalid-feedback">
+                                    {{ form.email.errors }}
+                                </div>
+                            </div>
+                            <div class="my-1 form__input">
+                                <input id="id_username" type="text" name="username" placeholder="Username"
+                                    class="form-control {% if form.username.errors %}is-invalid{% endif %}">
+                                <div class="invalid-feedback">
+                                    {{ form.username.errors }}
+                                </div>
+                            </div>
+                            <div class="my-1 form__input">
+                                <input id="id_full_name" type="text" name="full_name" placeholder="Full Name"
+                                    class="form-control {% if form.full_name.errors %}is-invalid{% endif %}">
+                                <div class="invalid-feedback">
+                                    {{ form.full_name.errors }}
+                                </div>
+                            </div>
+                            <div class="my-1 form__input">
+                                <input id="id_password1" type="password" name="password1" placeholder="Password"
+                                    class="form-control {% if form.password1.errors %}is-invalid{% endif %}">
+                                <div class="invalid-feedback">
+                                    {{ form.password1.errors }}
+                                </div>
+                            </div>
+                            <div class="my-1 form__input">
+                                <input id="id_password2" type="password" name="password2" placeholder="Retype Password"
+                                    class="form-control {% if form.password2.errors %}is-invalid{% endif %}">
+                                <div class="invalid-feedback">
+                                    {{ form.password2.errors }}
+                                </div>
+                            </div>
+                            <div class="my-4 mx-auto text-center">
+                                <button class="btn btn-sm auth__btn" type="submit">Sign up</button>
+                            </div>
+                        </form>
+                    </div>
+                    <p class="terms__conditions mb-4">By signing up, you agree to our <strong>Terms</strong> ,
+                        <strong>Data Policy</strong> and <strong>Cookies Policy</strong> .
+                    </p>
+                </div>
             </div>
-          </div>
-          <div class="input-box">
-            <span class="details">Username</span>
-            <input type="text" placeholder="Enter your username" name="username" required>
-            <div class="invalid-feedback">
-              {{ form.username.errors }}
+            <div class="text-center card mt-2 px-5 mx-auto signup__card">
+                <p class="have__an__account py-3">Have an account? <a href="{% url 'blog:signin' %}"
+                        class="text-decoration-none">Sign in</a></p>
             </div>
-          </div>
-          <div class="input-box">
-            <span class="details">Email</span>
-            <input type="email" placeholder="Enter your email" name="email" required>
-            <div class="invalid-feedback">
-              {{ form.email.errors }}
-            </div>
-          </div>
-          <div class="input-box">
-            <span class="details">Phone Number</span>
-            <input type="number" placeholder="Enter your number" name="phone_number" required>
-            <div class="invalid-feedback">
-              {{ form.phone_number.errors }}
-            </div>
-          </div>
-          <div class="input-box">
-            <span class="details">Password</span>
-            <input type="password" placeholder="Enter your password" name="password1" required>
-            <div class="invalid-feedback">
-              {{ form.password1.errors }}
-            </div>
-          </div>
-          <div class="input-box">
-            <span class="details">Confirm Password</span>
-            <input type="password" placeholder="Confirm your password" name="password2" required>
-            <div class="invalid-feedback">
-              {{ form.password2.errors }}
-            </div>
-          </div>
         </div>
-        <div class="gender-details">
-          <input type="radio" name="gender" id="dot-1" value ="Male">
-          <input type="radio" name="gender" id="dot-2" value="Female">
-          <input type="radio" name="gender" id="dot-3" value="Other">
-          <span class="gender-title">Gender</span>
-          <div class="category">
-            <label for="dot-1">
-            <span class="dot one"></span>
-            <span class="gender">Male</span>
-          </label>
-          <label for="dot-2">
-            <span class="dot two"></span>
-            <span class="gender">Female</span>
-          </label>
-          <label for="dot-3">
-            <span class="dot three"></span>
-            <span class="gender">Prefer not to say</span>
-            </label>
-          </div>
-        </div>
-        <div class="button">
-          <input type="submit" value="Register">
-        </div>
-      </form>
     </div>
-  </div>
 </div>
 <div class="footer"><h5>All rights reserved<br>geekENV Inc©</h5>
   <div><a href="#">Home</a><a href="#">About</a><a href="#">Publish</a><a href="#">Contact</a></div>
@@ -144,7 +100,9 @@
   </div>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
-</body>
-</html>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+
+{% endblock %}

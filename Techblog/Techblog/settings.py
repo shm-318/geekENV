@@ -189,15 +189,15 @@ SOCIALACCOUNT_PROVIDERS = {
 
 #for forgot password
 
-#EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'geekenv.help@gmail.com'
-EMAIL_HOST_PASSWORD = 'tqevdbgipajlculj'
+EMAIL_HOST_PASSWORD = 'eeppivufdlcuxluw'     #here we have to put app password as we enble 2-factor auth
 
-#EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
-#EMAIL_FILE_PATH = BASE_DIR / 'emails'
+""" EMAIL_BACKEND = 'django.core.mail.backends.filebased.EmailBackend'
+EMAIL_FILE_PATH = BASE_DIR / 'emails' """
 
 #! For Custom User Models
 AUTH_USER_MODEL = 'blog.User'
