@@ -51,7 +51,7 @@
               <li class="nav-item">
                 <a
                   class="nav-link"
-                  href="{% url 'blog:register' %}"
+                  href="{% url 'blog:signup' %}"
                   style="color: white"
                   >Get Started</a
                 >
@@ -130,7 +130,7 @@
         </div>
       </form>
       <div class="option"><b>Forgotten Password?</b> <br><a href="{% url 'blog:password_reset' %}">Reset Password</a></div>
-      <div class="option"><b>Not registered Yet?</b> <br> <a href="{% url 'blog:register' %}">Register Here</a></div>
+      <div class="option"><b>Not registered Yet?</b> <br> <a href="{% url 'blog:signup' %}">Register Here</a></div>
       <div class="option"><b>Or Connect With Social Media</b></div>
       <div class="twitter">
         <a href="{% provider_login_url 'google' %}"><i class="fab fa-google"></i>Sign in With Google</a>
@@ -157,10 +157,6 @@
       integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
       crossorigin="anonymous"
     ></script>
-    <script type="text/javascript">
-      {% if valid == False %}
-        alert("Invalid Username or Password")
-      {% endif %}
-    </script>
+    
   </body>
 </html>

@@ -7,25 +7,22 @@ from django.conf import settings
 from django.contrib import messages
 
 from django.contrib.auth.views import (
-                                            PasswordResetView,
-                                            PasswordResetDoneView,
-                                            PasswordResetConfirmView,
-                                            PasswordResetCompleteView,
-                                            PasswordChangeView,
-                                            PasswordChangeDoneView,
-                                        )
+    PasswordResetView,
+    PasswordResetDoneView,
+    PasswordResetConfirmView,
+    PasswordResetCompleteView,
+    PasswordChangeView,
+    PasswordChangeDoneView,
+)
 from django.contrib.auth import (
-                                    authenticate,
-                                    login,
-                                    logout,
-                                    get_user_model,
-                                )
+    authenticate,
+    login,
+    logout,
+    get_user_model,
+)
 
 from django.contrib import messages
 from django.urls import reverse_lazy
-
-
-
 
 
 #! for confirmation mail
@@ -41,19 +38,22 @@ from django.core.mail import EmailMessage, message, send_mail
 
 User = get_user_model()
 
-#for editor
+# for editor
+
+
 def createBlog(request):
-    return render(request,'blog/editor.html',{})
+    return render(request, 'blog/editor.html', {})
 
 
-# for signup user
+# Signup user with email confirmation
 def signup(request):
 
     if request.method == 'POST':
-        # print("enter in post")
+        print("enter in post")
         form = UserForm(request.POST)
+        print(form)
         if form.is_valid():
-            # print("enter at before mail")
+            print("enter at before mail")
             user = form.save(commit=False)
             user.is_active = False
             user.save()
@@ -77,18 +77,18 @@ def signup(request):
                 mail_subject, message, to=[to_email]
             )
             email.send()
-
-            return render(request,'authentication/aftersendlinktomail.html')
+            print("email sent")
+            return render(request, 'authentication/aftersendlinktomail.html')
         else:
+            print("form is not valid")
             form = UserForm(request.POST)
             return render(request, 'authentication/register_s.html', {'form': form})
     else:
         form = UserForm()
         return render(request, 'authentication/register_s.html', {'form': form})
 
-# activate function used in signup
 
-
+# activate function used in signup view
 def activate(request, uidb64, token, backend='django.contrib.auth.backends.ModelBackend'):
     try:
         uid = force_text(urlsafe_base64_decode(uidb64))
@@ -100,11 +100,12 @@ def activate(request, uidb64, token, backend='django.contrib.auth.backends.Model
         user.save()
         login(request, user, backend='django.contrib.auth.backends.ModelBackend')
         return redirect('blog:signin')
-        #return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
+        # return HttpResponse('Thank you for your email confirmation. Now you can login your account.')
     else:
         return HttpResponse('Activation link is invalid!')
 
 
+# User Profile view
 class ProfileView(View):
     template_name_auth = 'authentication/auth_user.html'
     template_name_anon = 'authentication/anon_user.html'
@@ -117,8 +118,7 @@ class ProfileView(View):
         except Exception as e:
             return HttpResponse('<h1>This User does not exist.</h1>')
 
-        #set picture_url
-
+        # set picture_url
 
         if username == request.user.username:
             context = {'user': user}
@@ -127,8 +127,8 @@ class ProfileView(View):
             context = {'user': user}
             return render(request, self.template_name_anon, context=context)
 
-#sign in
 
+# sign in
 def Signin(request, *args, **kwargs):
 
     if request.method == 'POST':
@@ -140,7 +140,8 @@ def Signin(request, *args, **kwargs):
             email = user_obj.email
         except Exception as e:
             email = email_username
-        user = authenticate(request, username=email_username, password=password)
+        user = authenticate(
+            request, username=email_username, password=password)
 
         if user is None:
             messages.error(request, 'Invalid Login.', extra_tags="error")
@@ -152,18 +153,24 @@ def Signin(request, *args, **kwargs):
         return redirect('blog:blog_view', request.user.username)
     return render(request, 'blog/login.html')
 
-#Main page
+# Main page
+
+
 def IndexView(request):
     if request.user.is_authenticated:
         return redirect('blog:profile_view', request.user.username)
     return render(request, 'blog/lead.html')
 
-#signout
+# signout
+
+
 def Signout(request):
     logout(request)
     return redirect('blog:index_view')
 
-#contact
+# contact
+
+
 def contact(request):
     form1 = ContactForm()
 
@@ -172,27 +179,31 @@ def contact(request):
 
         if form1.is_valid():
             form1.save()
-            
+
             name = request.POST['Name']
             email = request.POST['Email']
             contact = request.POST['ContactNo']
             query = request.POST['Message']
-            
+
             subject = f"Message from {name}"
             message = f"Hey There!\nA user named {name} Contacted us with the message:\n{query}\nContact details: {contact} \nEmail : {email} \n "
             email_from = settings.EMAIL_HOST_USER
-            recipient_list = [email_from,]
+            recipient_list = [email_from, ]
 
-            send_mail(subject,message,email_from,recipient_list)
+            send_mail(subject, message, email_from, recipient_list)
             messages.success(request, 'Query Submitted Successfully')
             return redirect('/')
     return render(request, 'blog/contact.html', context={'form1': form1})
 
-#about
+# about
+
+
 def about(request):
     return render(request, 'blog/about.html')
 
-#resistration of new user
+# Resistration of new user with no confirmation mail
+
+
 def register(request):
     email_unique = True
     password_match = True
@@ -228,6 +239,7 @@ def register(request):
 
 # forgot Password
 
+
 class PRView(PasswordResetView):
     email_template_name = 'authentication/password_reset_email.html'
     template_name = 'authentication/password_reset.html'
@@ -250,9 +262,7 @@ class PRComplete(PasswordResetCompleteView):
 # bot
 
 def Yourbot(request):
-    return render(request,'authentication/bot.html')
-
-
+    return render(request, 'authentication/bot.html')
 
 
 # user blog view
@@ -277,7 +287,7 @@ class BlogView(View):
             return render(request, self.template_name_anon, context=context)
 
 
-#profile edit
+# profile edit
 class ProfileEditView(View):
     template_name = 'authentication/profile_edit.html'
     form_class = UserEditForm
@@ -292,13 +302,9 @@ class ProfileEditView(View):
         context = {'form': form}
         return render(request, self.template_name, context=context)
 
-
-
-
-
-
     def post(self, request, *args, **kwargs):
-        form = self.form_class(request.POST, request.FILES, instance=request.user)
+        form = self.form_class(
+            request.POST, request.FILES, instance=request.user)
 
         if form.is_valid():
             form.save()
