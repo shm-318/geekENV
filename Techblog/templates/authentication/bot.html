@@ -2,12 +2,17 @@
 {% load static %}
 
 {% block extra_head %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/main.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/authentication/bot.css' %}">
 {% endblock %}
 
 
 {% block content %}
-
-<h1>sorry for Inconvience we will bring your Bot In few days </h1>
-
+<div class="container">
+    <div class="message">
+    <h3>We are really sorry to keep you waiting :((</h3>
+    <h3>The Query bot will be unleashed soon!!</h3>
+    </div>
+    <img src="{% static 'tempBot.png' %}" alt="">
+    
+</div>
 {% endblock %}
