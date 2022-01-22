@@ -17,54 +17,73 @@
   <link href="https://fonts.googleapis.com/css2?family=Bree+Serif&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-	<style>
-		/* * {
+  <style>
+    /* * {
 			padding: 0;
 			margin: 0;
 			box-sizing: border-box;
 		} */
-		button {
-			height: 60px;
-			width: 60px;
-			background-color: rgba(0, 0, 0, 0.795);
-			border: none;
-			cursor: pointer;
-			border-radius: 5px;
-			
-		}
-		#dialogflow{
-			
-			position: fixed;
-			left: 73%;
-			bottom: 15%;
-			border: 2px solid black;
-			background-color: black;
-			border-radius: 5px;
-			display: none;
-      z-index: 100;
-		}
-		
-		#togglebutton
-		{
-			position: fixed;
-			left: 92%;
-			bottom: 5%;
-			border-radius: 5px;
-		}
+    button {
+      height: 60px;
+      width: 60px;
+      background-color: rgba(0, 0, 0, 0.795);
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
 
-		#togglebutton:hover{
-			background-color: #000;
-		}
+    }
 
-		#div1{
-			background-color:#8888ff;
-			display:block;
-			height:0px;
-			overflow:hidden;
-			border: 1px solid #000;
-		}
-		
-	</style>
+    #dialogflow {
+
+      position: fixed;
+      left: 73%;
+      bottom: 15%;
+      border: 2px solid black;
+      background-color: black;
+      border-radius: 5px;
+      display: none;
+      z-index: 10;
+    }
+
+    #togglebutton {
+      position: fixed;
+      left: 92%;
+      bottom: 5%;
+      border-radius: 5px;
+      z-index: 10;
+    }
+
+    #togglebutton:hover {
+      background-color: #000;
+    }
+
+    @media only screen and (max-width: 600px) {
+      #togglebutton {
+        left: 82%;
+      }
+    }
+
+    #div1 {
+      background-color: #8888ff;
+      display: block;
+      height: 0px;
+      overflow: hidden;
+      border: 1px solid #000;
+    }
+
+    .footer {
+      position: relative;
+      height: 165px;
+      background-color: black;
+      text-align: center;
+      color: white;
+      bottom: 0px;
+      left: 0px;
+      right: 0px;
+      margin-bottom: 0px;
+      margin-top: 10px;
+    }
+  </style>
 </head>
 
 <body>
@@ -82,7 +101,7 @@
               style="color: white">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/" style="color: white">Publish</a>
+            <a class="nav-link" href="{% url 'blog:createblog' %}" style="color: white">Publish</a>
           </li>
           {% if not request.user.is_authenticated %}
           <li class="nav-item">
@@ -90,10 +109,10 @@
           </li>
           {% endif %}
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white">Compile and Run</a>
+            <a class="nav-link" href="{% url 'blog:ideforyou' %}" style="color: white">Compile and Run</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#" style="color: white">Ask a Query</a>
+            <a class="nav-link" href="{% url 'blog:Bot' %}" style="color: white">Ask a Query</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
@@ -120,31 +139,33 @@
   </nav>
 
   <div id="dialogflow">
-    <iframe id="frame"  allow="microphone;" width="350"
+    <iframe id="frame" allow="microphone;" width="350"
       src="https://console.dialogflow.com/api-client/demo/embedded/f820f653-1eb7-4940-9294-0c7ac2373638">
     </iframe>
-    
+
   </div>
   <div id="togglebutton">
     <button onclick="bottoggle()">
-      <i class="material-icons" style="color: #f35d27;font-size:35px; margin-top: 5px;"><span id="toggletext">chat_bubble</span></i>
+      <i class="material-icons" style="color: #f35d27;font-size:35px; margin-top: 5px;"><span
+          id="toggletext">chat_bubble</span></i>
     </button>
   </div>
 
   {% block content %} {% endblock %}
 
-  <div class="footer"><h5>All rights reserved<br>geekENV Inc©</h5>
+  <div class="footer">
+    <h5>All rights reserved<br>geekENV Inc©</h5>
     <div><a href="#">Home</a><a href="#">About</a><a href="#">Publish</a><a href="#">Contact</a></div>
     <div>
-              <i class="fab fa-facebook-f fa-2x" style="margin:10px"></i>
-              <i class="fas fa-envelope fa-2x" style="margin:10px"></i>
-              <i class="fab fa-github fa-2x" style="margin:10px"></i>
-              <i class="fab fa-twitter fa-2x" style="margin:10px"></i>
-            </div>
-    
-            Made with <i class="fas fa-heart"></i> in India
+      <i class="fab fa-facebook-f fa-2x" style="margin:10px"></i>
+      <i class="fas fa-envelope fa-2x" style="margin:10px"></i>
+      <i class="fab fa-github fa-2x" style="margin:10px"></i>
+      <i class="fab fa-twitter fa-2x" style="margin:10px"></i>
     </div>
-</div>
+
+    Made with <i class="fas fa-heart"></i> in India
+  </div>
+  </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
@@ -159,35 +180,33 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-    
+
 </body>
 <script>
-	function bottoggle() {
-		var x = document.getElementById("dialogflow");
-		var y = document.getElementById("toggletext");
-		var frameD = document.getElementById("frame");
+  function bottoggle() {
+    var x = document.getElementById("dialogflow");
+    var y = document.getElementById("toggletext");
+    var frameD = document.getElementById("frame");
 
-		if(x.style.display == "block") 
-		{
-			y.innerHTML= "chat_bubble";
+    if (x.style.display == "block") {
+      y.innerHTML = "chat_bubble";
 
-			x.style.display = "none";
-			x.style.color= "#f35d27";
+      x.style.display = "none";
+      x.style.color = "#f35d27";
 
-			frameD.style.height=0;
-			
-		} 
-		else 
-		{
-			y.innerHTML="power_settings_new";
+      frameD.style.height = 0;
 
-			x.style.display = "block";
-			x.style.color="red";
+    }
+    else {
+      y.innerHTML = "power_settings_new";
 
-			frameD.style.height="550px";
-			
-		}
-	}
+      x.style.display = "block";
+      x.style.color = "red";
+
+      frameD.style.height = "550px";
+
+    }
+  }
 
 </script>
 
