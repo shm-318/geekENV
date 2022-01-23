@@ -5,6 +5,7 @@ from django.views.generic import View
 from .models import *
 from django.conf import settings
 from django.contrib import messages
+import requests
 
 from django.contrib.auth.views import (
     PasswordResetView,
@@ -159,8 +160,8 @@ def Signin(request, *args, **kwargs):
 def IndexView(request):
     if request.user.is_authenticated:
         return redirect('blog:profile_view', request.user.username)
-    return render(request, 'blog/lead.html')
-
+    response=requests.get('https://newsapi.org/v2/everything?q=programming&from=2022-01-01&sortBy=popularity&apiKey=cd0565836d8743369c48a336dc08e944').json()
+    return render(request, 'blog/lead.html',{'response':response})
 # signout
 
 

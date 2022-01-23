@@ -112,108 +112,41 @@
   <div class="content">
     <div class="articles">
       <h3 style="text-align: center; color: Black; margin: 20px">Featured</h3>
+    {% for x in response.articles %}
       <div class="card mb-3">
         <div class="row g-0">
           <div class="col-md-4">
             <img
-              src="{% static 'suraj.jpg' %}"
+              src="{{ x.urlToImage }}"
               class="img-fluid rounded-start"
-              alt="..."
+              alt="{% static 'news_default.png' %}"
             />
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <p class="author">
                 <a href="#" style="text-decoration: none; color: Black"
-                  ><b>Shivam Mishra</b></a
-                >in<a href="#" style="text-decoration: none; color: Black"
-                  ><b>Trending</b></a
+                  ><b>{{x.author}}</b></a
+                >from<a href="#" style="text-decoration: none; color: Black"
+                  ><b>{{x.source.name}}</b></a
                 >
                 <a href="#" style="text-decoration: none; color: Black"
-                  ><h5 class="card-title">Most Wanted Criminal Arrested</h5></a
+                  ><h5 class="card-title">{{x.title}}</h5></a
                 >
               </p>
 
               <p class="card-text">
-                Suraj was on a long run and was wanted in multiple cases in 28
-                states and 9 UTs of India.
+               {{x.description}}
               </p>
               <p class="card-text">
-                <small class="text-muted">July 16,2021 &nbsp;&nbsp;</small
-                ><small class="text-muted">Last updated 3 mins ago</small>
+                <small class="text-muted">{{x.publishedAt}}</small
+                >
               </p>
             </div>
           </div>
         </div>
       </div>
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="{% static 'suraj.jpg' %}"
-              class="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <p class="author">
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><b>Shivam Mishra</b></a
-                >in<a href="#" style="text-decoration: none; color: Black"
-                  ><b>Trending</b></a
-                >
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><h5 class="card-title">Most Wanted Criminal Arrested</h5></a
-                >
-              </p>
-
-              <p class="card-text">
-                Suraj was on a long run and was wanted in multiple cases in 28
-                states and 9 UTs of India.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">July 16,2021 &nbsp;&nbsp;</small
-                ><small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="{% static 'suraj.jpg' %}"
-              class="img-fluid rounded-start"
-              alt="..."
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <p class="author">
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><b>Shivam Mishra</b></a
-                >in<a href="#" style="text-decoration: none; color: Black"
-                  ><b>Trending</b></a
-                >
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><h5 class="card-title">Most Wanted Criminal Arrested</h5></a
-                >
-              </p>
-
-              <p class="card-text">
-                Suraj was on a long run and was wanted in multiple cases in 28
-                states and 9 UTs of India.
-              </p>
-              <p class="card-text">
-                <small class="text-muted">July 16,2021 &nbsp;&nbsp;</small
-                ><small class="text-muted">Last updated 3 mins ago</small>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
+    {% endfor %}
     </div>
     <div class="tags">
       <h3 style="text-align: center">Explore tags</h3>
