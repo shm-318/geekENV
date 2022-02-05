@@ -22,10 +22,10 @@ urlpatterns = [
     
     path('admin/', admin.site.urls),
     url('',include('blog.urls')),
-    url('',include('bot.urls')),
+    url('bot/',include('bot.urls')),
     path('accounts/', include('allauth.urls')),
-    path('editorjs/', include('django_editorjs_fields.urls')),
-    #path('',include('ide.urls')),
+    path('editor/', include('editor.urls')),
+    path('ide/',include('ide.urls')),
 
     #for password reset if some non-solvable error comes
     #url(r'^', include('django.contrib.auth.urls')),
