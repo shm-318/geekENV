@@ -34,15 +34,10 @@ urlpatterns = [
 
     # password reset
     path('password/reset/', PRView.as_view(), name='password_reset'),
-    path('password/reset/confirm/<uidb64>/<token>',
-         PRConfirm.as_view(), name='password_reset_confirm'),
+    path('password/reset/confirm/<uidb64>/<token>',PRConfirm.as_view(), name='password_reset_confirm'),
     path('password/reset/done/',  PRDone.as_view(), name='password_reset_done'),
-    path('password/reset/complete/', PRComplete.as_view(),
-         name='password_reset_complete'),
+    path('password/reset/complete/', PRComplete.as_view(),name='password_reset_complete'),
 
-    # bot
-    path('YourBot', views.Yourbot, name='Bot'),
-    
     #editor
 
 ]
