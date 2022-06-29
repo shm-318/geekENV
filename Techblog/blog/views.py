@@ -48,7 +48,6 @@ def createBlog(request):
 
 # Signup user with email confirmation
 def signup(request):
-
     if request.method == 'POST':
         print("enter in post")
         form = UserForm(request.POST)
