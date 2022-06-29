@@ -76,9 +76,6 @@
     border-radius: 100%;
   }
 
-
-
-
   .detail-container {
 
     display: flex;
@@ -191,7 +188,7 @@
 
 
             {% if user.picture_url %}
-            <img src="" class="rounded-circle z-depth-0">
+            <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0">
             {% else %}
             <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
               class="rounded-circle z-depth-0">
@@ -230,7 +227,7 @@
       </ul>
 
       <a class="navbar-brand" href="/">
-        <img src="{% static 'img/techblog1_logo.png' %}" class="nav__logo" style="width:7rem; height: 2.5rem;">
+        <img src="{% static 'geek_logo.png' %}" class="nav__logo" style="width:7rem; height: 2.5rem;">
       </a>
 
     </div>

@@ -35,7 +35,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'ide',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -44,8 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog',
     'bot',
+    'editor',
+     'ide',
     #! For editor API
-    'django_editorjs_fields',
+    'django_editorjs',
 
     #for auth
     

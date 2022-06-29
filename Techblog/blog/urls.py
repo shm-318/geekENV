@@ -3,7 +3,7 @@ from django.urls import path, include
 from django.conf.urls import url
 from blog import views
 from .views import PRView, PRDone, PRConfirm, PRComplete
-from ide.views import runCode
+
 
 app_name = 'blog'
 urlpatterns = [
@@ -42,7 +42,7 @@ urlpatterns = [
 
     # bot
     path('YourBot', views.Yourbot, name='Bot'),
+    
+    #editor
 
-    # ide
-    path('ide', runCode, name='ideforyou')
 ]

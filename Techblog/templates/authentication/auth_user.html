@@ -61,30 +61,28 @@
   }
 
   .container-userimage {
-    position: relative;
-    width: 50%;
-    max-width: 300px;
-    left: 38%;
+    width: 200px;
+    height: 200px;
+    margin: auto;
   }
 
-  .image {
-    display: block;
-    width: 50%;
-    height: auto;
-    border: 1px solid black;
-    border-radius: 100%;
+  .container-userimage > img 
+  {
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover;
   }
 
   .detail-container {
     display: flex;
     width: 80vw;
     box-shadow: 0 0 5px 3px black;
-    margin-top: -55px;
-    margin-left: 10vw;
     flex-direction: column;
     border-radius: 20px;
     padding-top: 65px;
     padding-bottom: 15px;
+    margin: auto;
+    margin-top: -9vh;
     margin-bottom: 13vh;
   }
 
@@ -134,16 +132,17 @@
     }
 
     .container-userimage {
-      left: 43.5%;
-      margin-top: 70px;
+      left: 27%;
+      margin-top: 7rem;
     }
   }
 </style>
+
 {% endblock %}
 
 {% block content %}
 
-<header class="sticky-top" style="z-index: 0">
+<header class="sticky-top" style="z-index: 5">
   <nav class="navbar">
     <div class="container">
       <a class="navbar-brand inmobile" href="/">
@@ -173,7 +172,7 @@
           <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false" style="padding-top: inherit; padding: inherit">
             {% if user.picture_url %}
-            <img src="" class="rounded-circle z-depth-0" />
+            <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0" />
             {% else %}
             <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
               class="rounded-circle z-depth-0" />
@@ -207,15 +206,16 @@
       </ul>
 
       <a class="navbar-brand" href="/">
-        <img src="{% static 'img/techblog1_logo.png' %}" class="nav__logo" style="width: 7rem; height: 2.5rem" />
+        <img src="{% static 'geek_logo.png' %}" class="nav__logo" style="width: 7rem; height: 2.5rem" />
       </a>
     </div>
   </nav>
 </header>
 
+
 <div class="name">
   <p>
-    <span style="font-size: 2rem"><b>Suraj Kumar</b></span>
+    <span style="font-size: 2rem"><b>{{ user.full_name }}</b></span>
   </p>
   <p>
     <a href=""><span>4 Follower </span></a>
@@ -224,8 +224,11 @@
 </div>
 
 <div class="container-userimage">
-  <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
-    class="rounded-circle z-depth-0" />
+  {% if user.picture_url %}
+    <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0" />
+  {% else %}
+    <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" class="rounded-circle z-depth-0" />
+  {% endif %}
 </div>
 
 <div class="detail-container">
