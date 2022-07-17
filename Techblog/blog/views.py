@@ -40,8 +40,6 @@ from django.core.mail import EmailMessage, message, send_mail
 User = get_user_model()
 
 # for editor
-
-
 def createBlog(request):
     return render(request, 'blog/editor.html', {})
 
@@ -302,7 +300,7 @@ class ProfileEditView(View):
         if form.is_valid():
             form.save()
             messages.success(request, 'Saved your details in a safe place.')
-            return redirect('blog:profile_edit_view', request.user.username)
+            return redirect('blog:profile_view', request.user.username)
         else:
             for field in form.errors:
                 form[field].field.widget.attrs['class'] += ' is-invalid'

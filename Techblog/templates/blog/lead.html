@@ -1,167 +1,161 @@
-{% extends 'blog/about.html' %} {% load static %} 
+{% extends 'blog/about.html' %} {% load static %}
 {% block title%}<title>geekENV</title>{% endblock %} {% block css %}
-<link rel="stylesheet" href="{% static 'css/lead.css' %}" /> {% endblock %} 
+<link rel="stylesheet" href="{% static 'css/lead.css' %}" /> {% endblock %}
 {% block body_block %}
 <style>
-.success{
-     list-style: none;
-     background-color: #2e6da4;
-     color: white;
-     box-shadow: 12px 12px 12px #e61c66;
-     text-align: center;
- }
+    .success {
+        list-style: none;
+        background-color: #2e6da4;
+        color: white;
+        box-shadow: 12px 12px 12px #e61c66;
+        text-align: center;
+    }
 </style>
 {% if messages %}
-        <ul class="messages" id="msg">
-               {% for message in messages %}
-                     <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-               {% endfor %}
-       </ul>
-       <script>
-    setTimeout(function(){
+<ul class="messages" id="msg">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+</ul>
+<script>
+    setTimeout(function () {
         if ($('#msg').length > 0) {
             $('#msg').remove();
         }
     }, 4000)    // 2000 millisecond
 </script>
-  {% endif %} 
+{% endif %}
 <div class="container">
-  <div class="brand-logo">
-    <div class="quote">
-       <p>Presenting a New domain of Developer Interaction!<br>
-          Share Ideas, grow and Help Others Grow!<br>
-          </p>
-        <button class="btn btn-success"><a href="{% url 'blog:signin' %}" style="text-decoration:none;color:white" >Let me in!</a></button>
+    <div class="brand-logo">
+        <div class="quote">
+            <p>Presenting a New domain of Developer Interaction!<br>
+                Share Ideas, grow and Help Others Grow!<br>
+            </p>
+            <button class="btn btn-success"><a href="{% url 'blog:signin' %}"
+                    style="text-decoration:none;color:white">Let me in!</a></button>
+        </div>
+        <div class="quote-img" style="height:25vh;margin-top:20px">
+            <img src="{% static 'img_vr.png' %}" style="height: 100%; width: 100%; object-fit: contain">
+        </div>
     </div>
-    <div class="quote-img" style="height:25vh;margin-top:20px">
-          <img src = "{% static 'img_vr.png' %}" style="height: 100%; width: 100%; object-fit: contain">
-    </div>
-  </div>
-  <div class="trending">
-    <div class="title-trend">
-      <h5 style="color: Black;text-align:center">Trending In geekENV</h5>
-    </div>
-    <div class="story-trend">
-      <div class="card trend">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p style="font-size: 12px">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
+    <div class="trending">
+        <div class="title-trend">
+            <h5 style="color: Black;text-align:center">Trending In geekENV</h5>
         </div>
-      </div>
-      <div class="card trend">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p style="font-size: 12px">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      <div class="card trend">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p style="font-size: 12px">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      <div class="card trend">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p style="font-size: 12px">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-      <div class="card trend">
-        <div class="card-header">Quote</div>
-        <div class="card-body">
-          <blockquote class="blockquote mb-0">
-            <p style="font-size: 12px">
-              A well-known quote, contained in a blockquote element.
-            </p>
-            <footer class="blockquote-footer">
-              Someone famous in <cite title="Source Title">Source Title</cite>
-            </footer>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="content">
-    <div class="articles">
-      <h3 style="text-align: center; color: Black; margin: 20px">Featured</h3>
-    {% for x in response.articles %}
-      <div class="card mb-3">
-        <div class="row g-0">
-          <div class="col-md-4">
-            <img
-              src="{{ x.urlToImage }}"
-              class="img-fluid rounded-start"
-              alt="{% static 'news_default.png' %}"
-            />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <p class="author">
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><b>{{x.author}}</b></a
-                >from<a href="#" style="text-decoration: none; color: Black"
-                  ><b>{{x.source.name}}</b></a
-                >
-                <a href="#" style="text-decoration: none; color: Black"
-                  ><h5 class="card-title">{{x.title}}</h5></a
-                >
-              </p>
-
-              <p class="card-text">
-               {{x.description}}
-              </p>
-              <p class="card-text">
-                <small class="text-muted">{{x.publishedAt}}</small
-                >
-              </p>
+        <div class="story-trend">
+            <div class="card trend">
+                <div class="card-header">Quote</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size: 12px">
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                        <footer class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                    </blockquote>
+                </div>
             </div>
-          </div>
+            <div class="card trend">
+                <div class="card-header">Quote</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size: 12px">
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                        <footer class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card trend">
+                <div class="card-header">Quote</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size: 12px">
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                        <footer class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card trend">
+                <div class="card-header">Quote</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size: 12px">
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                        <footer class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
+            <div class="card trend">
+                <div class="card-header">Quote</div>
+                <div class="card-body">
+                    <blockquote class="blockquote mb-0">
+                        <p style="font-size: 12px">
+                            A well-known quote, contained in a blockquote element.
+                        </p>
+                        <footer class="blockquote-footer">
+                            Someone famous in <cite title="Source Title">Source Title</cite>
+                        </footer>
+                    </blockquote>
+                </div>
+            </div>
         </div>
-      </div>
-    {% endfor %}
     </div>
-    <div class="tags">
-      <h3 style="text-align: center">Explore tags</h3>
-      <div class="container1" style="margin-left: 20px">
-        <span class="topic-tags"><a href="#">HTML</a></span>
-        <span class="topic-tags"><a href="#">CSS</a></span>
-        <span class="topic-tags"><a href="#">Javascript</a></span>
-        <span class="topic-tags"><a href="#">JQuery</a></span>
-        <span class="topic-tags"><a href="#">Django</a></span>
-        <span class="topic-tags"><a href="#">ReactJs</a></span>
-        <span class="topic-tags"><a href="#">CP</a></span>
-      </div>
+    <div class="content">
+        <div class="articles">
+            <h3 style="text-align: center; color: Black; margin: 20px">Featured</h3>
+            {% for x in response.articles %}
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{ x.urlToImage }}" class="img-fluid rounded-start"
+                            alt="{% static 'news_default.png' %}" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <p class="author">
+                                <a href="#" style="text-decoration: none; color: Black"><b>{{x.author}}</b></a>from<a
+                                    href="#" style="text-decoration: none; color: Black"><b>{{x.source.name}}</b></a>
+                                <a href="#" style="text-decoration: none; color: Black">
+                                    <h5 class="card-title">{{x.title}}</h5>
+                                </a>
+                            </p>
+
+                            <p class="card-text">
+                                {{x.description}}
+                            </p>
+                            <p class="card-text">
+                                <small class="text-muted">{{x.publishedAt}}</small>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="tags">
+            <h3 style="text-align: center">Explore tags</h3>
+            <div class="container1" style="margin-left: 20px">
+                <span class="topic-tags"><a href="#">HTML</a></span>
+                <span class="topic-tags"><a href="#">CSS</a></span>
+                <span class="topic-tags"><a href="#">Javascript</a></span>
+                <span class="topic-tags"><a href="#">JQuery</a></span>
+                <span class="topic-tags"><a href="#">Django</a></span>
+                <span class="topic-tags"><a href="#">ReactJs</a></span>
+                <span class="topic-tags"><a href="#">CP</a></span>
+            </div>
+        </div>
     </div>
-  </div>
-  
+
 </div>
 
 {% endblock %}

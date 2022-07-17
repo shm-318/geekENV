@@ -82,6 +82,4 @@ def upload_link_view(request):
                 description = meta.attrs['content']
             if (meta.attrs['name'] == 'title'):
                 title = meta.attrs['content']
-    return JsonResponse({'success': 1, 'meta':
-                         {"description": description, "title": title, "image": {"url": image}
-                          }})
+    return JsonResponse({'success': 1, 'meta':{"description": description, "title": title, "image": {"url": image}}})

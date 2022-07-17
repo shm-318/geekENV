@@ -6,136 +6,135 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/authentication/main.css' %}" />
 <title>Home | {{ request.user.username }}</title>
 <style>
-  #user__avatar img {
-    height: 26px;
-    width: 26px;
-  }
-
-  .navbar-nav .dropdown-menu {
-    position: absolute !important;
-  }
-
-  .nav__icons {
-    font-size: 24px;
-  }
-
-  .signout__btn {
-    border: none;
-    background: none;
-    cursor: pointer;
-    padding: 0;
-    text-decoration: none;
-  }
-
-  .container a {
-    text-decoration: none;
-    padding: 10px;
-  }
-
-  header {
-    box-shadow: 0 0 3px 0.5px black;
-    background-color: black;
-  }
-
-  .searchspace {
-    border: none;
-    font-size: medium;
-    width: 110px;
-    height: 25px;
-    padding: 10px;
-    margin: 10px;
-    background-color: black;
-    color: white;
-    border-bottom: 2px solid white;
-    outline: none;
-  }
-
-  .name {
-    margin-top: 2rem;
-    margin-left: 1.5rem;
-    text-align: center;
-  }
-
-  a {
-    text-decoration: none;
-  }
-
-  .container-userimage {
-    width: 200px;
-    height: 200px;
-    margin: auto;
-  }
-
-  .container-userimage > img 
-  {
-    width: 100%; 
-    height: 100%; 
-    object-fit: cover;
-  }
-
-  .detail-container {
-    display: flex;
-    width: 80vw;
-    box-shadow: 0 0 5px 3px black;
-    flex-direction: column;
-    border-radius: 20px;
-    padding-top: 65px;
-    padding-bottom: 15px;
-    margin: auto;
-    margin-top: -9vh;
-    margin-bottom: 13vh;
-  }
-
-  .detail-item {
-    text-align: center;
-    margin: 1rem;
-  }
-
-  .footer {
-    position: relative;
-    height: 25px;
-    background-color: black;
-    text-align: center;
-    color: white;
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
-    margin-top: 10px;
-  }
-
-  @media only screen and (max-width: 600px) {
-    .search__input {
-      display: none;
+    #user__avatar img {
+        height: 26px;
+        width: 26px;
     }
 
-    .navbar-brand {
-      display: none;
+    .navbar-nav .dropdown-menu {
+        position: absolute !important;
     }
 
-    .username {
-      display: none;
+    .nav__icons {
+        font-size: 24px;
     }
 
-    .inmobile {
-      display: block;
+    .signout__btn {
+        border: none;
+        background: none;
+        cursor: pointer;
+        padding: 0;
+        text-decoration: none;
     }
-  }
 
-  @media only screen and (min-width: 600px) {
-    .inmobile {
-      display: none;
+    .container a {
+        text-decoration: none;
+        padding: 10px;
+    }
+
+    header {
+        box-shadow: 0 0 3px 0.5px black;
+        background-color: rgba(248, 35, 35, 0.789);
+    }
+
+    .searchspace {
+        border: none;
+        font-size: medium;
+        width: 110px;
+        height: 25px;
+        padding: 10px;
+        margin: 10px;
+        background-color: rgba(251, 43, 43, 0.716);
+        color: white;
+        border-bottom: 2px solid white;
+        outline: none;
     }
 
     .name {
-      display: none;
+        margin-top: 2rem;
+        margin-left: 1.5rem;
+        text-align: center;
+    }
+
+    a {
+        text-decoration: none;
     }
 
     .container-userimage {
-      left: 27%;
-      margin-top: 7rem;
+        width: 200px;
+        height: 200px;
+        margin: auto;
     }
-  }
+
+    .container-userimage>img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .detail-container {
+        display: flex;
+        width: 80vw;
+        box-shadow: 0 0 5px 3px black;
+        flex-direction: column;
+        border-radius: 20px;
+        padding-top: 65px;
+        padding-bottom: 15px;
+        margin: auto;
+        margin-top: -9vh;
+        margin-bottom: 13vh;
+    }
+
+    .detail-item {
+        text-align: center;
+        margin: 1rem;
+    }
+
+    .footer {
+        position: relative;
+        height: 25px;
+        background-color: black;
+        text-align: center;
+        color: white;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        margin-bottom: 0px;
+        margin-top: 10px;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .search__input {
+            display: none;
+        }
+
+        .navbar-brand {
+            display: none;
+        }
+
+        .username {
+            display: none;
+        }
+
+        .inmobile {
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width: 600px) {
+        .inmobile {
+            display: none;
+        }
+
+        .name {
+            display: none;
+        }
+
+        .container-userimage {
+            left: 27%;
+            margin-top: 7rem;
+        }
+    }
 </style>
 
 {% endblock %}
@@ -143,100 +142,107 @@
 {% block content %}
 
 <header class="sticky-top" style="z-index: 5">
-  <nav class="navbar">
-    <div class="container">
-      <a class="navbar-brand inmobile" href="/">
-        <img src="{% static 'img/techblogonlylogo.png' %}" class="nav__logo" style="height: 2.5rem; width: 2.5rem" />
-      </a>
-
-      <a href="{% url 'blog:blog_view' user.username %}" style="font-size: 2rem; padding-bottom: 20px" class="username">
-        <b>{{ user.username }}</b>
-      </a>
-
-      <a href="{% url 'blog:profile_view' user.username %}"> About </a>
-
-      <div class="search__input m-auto d-none d-md-block">
-        <!-- Form to search Users -->
-        <form method="GET" action="" class="form-inline">
-          <input type="text" autocomplete="on" placeholder="Search Blog" value="" class="searchspace" name="query" />
-          <button type="submit" class="ml-2 btn p-0">
-            <i class="fa fa-search"></i>
-          </button>
-        </form>
-        <!-- Form to search Users End -->
-      </div>
-
-      <ul class="navbar-nav ml-0 ml-md-auto d-flex flex-row" style="cursor: pointer">
-        <!-- Dropdown for more menu -->
-        <li class="nav-item dropdown ml-2">
-          <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
-            aria-expanded="false" style="padding-top: inherit; padding: inherit">
-            {% if user.picture_url %}
-            <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0" />
-            {% else %}
-            <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
-              class="rounded-circle z-depth-0" />
-            {% endif %}
-          </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user__avatar">
-            <a class="dropdown-item" href="{% url 'blog:profile_view' request.user.username %}">
-              <span class="mr-3 fa fa-user-circle"></span>Profile
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand inmobile" href="/">
+                <img src="{% static 'img/techblogonlylogo.png' %}" class="nav__logo"
+                    style="height: 2.5rem; width: 2.5rem" />
             </a>
 
-            <a class="dropdown-item" href="{% url 'blog:profile_edit_view' request.user.username %}">
-              <span class="mr-3 fa fa-user-circle"></span>Edit Profile
+            <a href="{% url 'blog:blog_view' user.username %}" style="font-size: 2rem; padding-bottom: 20px"
+                class="username">
+                <b>{{ user.username }}</b>
             </a>
 
-            <a class="dropdown-item" href="">
-              <span class="mr-3 fa fa-cog"></span>Change Password
-            </a>
+            <a href="{% url 'blog:profile_view' user.username %}"> About </a>
 
-            <div class="dropdown-divider"></div>
-
-            <div class="dropdown-item">
-              <form method="POST" action="{% url 'blog:signout' %}">
-                {% csrf_token %}
-                <a href="javascript:;" onclick="parentNode.submit();" class="text-reset text-decoration-none">Sign
-                  Out</a>
-              </form>
+            <div class="search__input m-auto d-none d-md-block">
+                <!-- Form to search Users -->
+                <form method="GET" action="" class="form-inline">
+                    <input type="text" autocomplete="on" placeholder="Search Blog" value="" class="searchspace"
+                        name="query" />
+                    <button type="submit" class="ml-2 btn p-0">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+                <!-- Form to search Users End -->
             </div>
-          </div>
-        </li>
 
-      </ul>
+            <ul class="navbar-nav ml-0 ml-md-auto d-flex flex-row" style="cursor: pointer">
+                <!-- Dropdown for more menu -->
+                <li class="nav-item dropdown ml-2">
+                    <a class="nav-link dropdown-toggle" id="user__avatar" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false" style="padding-top: inherit; padding: inherit">
+                        {% if user.picture_url %}
+                        <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0" />
+                        {% else %}
+                        <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+                            class="rounded-circle z-depth-0" />
+                        {% endif %}
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="user__avatar">
+                        <a class="dropdown-item" href="{% url 'blog:profile_view' request.user.username %}">
+                            <span class="mr-3 fa fa-user-circle"></span>Profile
+                        </a>
 
-      <a class="navbar-brand" href="/">
-        <img src="{% static 'geek_logo.png' %}" class="nav__logo" style="width: 7rem; height: 2.5rem" />
-      </a>
-    </div>
-  </nav>
+                        <a class="dropdown-item" href="{% url 'blog:profile_edit_view' request.user.username %}">
+                            <span class="mr-3 fa fa-user-circle"></span>Edit Profile
+                        </a>
+
+                        <a class="dropdown-item" href="">
+                            <span class="mr-3 fa fa-cog"></span>Change Password
+                        </a>
+
+                        <div class="dropdown-divider"></div>
+
+                        <div class="dropdown-item">
+                            <form method="POST" action="{% url 'blog:signout' %}">
+                                {% csrf_token %}
+                                <a href="javascript:;" onclick="parentNode.submit();"
+                                    class="text-reset text-decoration-none">Sign
+                                    Out</a>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+
+            </ul>
+
+            <a class="navbar-brand" href="/">
+                <img src="{% static 'geek_logo.png' %}" class="nav__logo" style="width: 5rem; height: 3rem" />
+            </a>
+        </div>
+    </nav>
 </header>
 
 
 <div class="name">
-  <p>
-    <span style="font-size: 2rem"><b>{{ user.full_name }}</b></span>
-  </p>
-  <p>
-    <a href=""><span>4 Follower </span></a>
-    <a href=""><span> 3 Following </span></a>
-  </p>
+    <p>
+        <span style="font-size: 2rem"><b>{{ user.full_name }}</b></span>
+    </p>
+    <p>
+        <a href=""><span>4 Follower </span></a>
+        <a href=""><span> 3 Following </span></a>
+    </p>
 </div>
 
 <div class="container-userimage">
-  {% if user.picture_url %}
+    {% if user.picture_url %}
     <img src="{{ user.picture_url }}" class="rounded-circle z-depth-0" />
-  {% else %}
-    <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png" class="rounded-circle z-depth-0" />
-  {% endif %}
+    {% else %}
+    <img src="https://i.pinimg.com/originals/51/f6/fb/51f6fb256629fc755b8870c801092942.png"
+        class="rounded-circle z-depth-0" />
+    {% endif %}
 </div>
 
 <div class="detail-container">
-  <div class="detail-item">Status</div>
-  <div class="detail-item">college</div>
-  <div class="detail-item">Email</div>
-  <div class="detail-item">website</div>
-  <div class="detail-item">State</div>
-  <div class="detail-item">country</div>
+    <div class="detail-item">{{request.user.full_name}}</div>
+    <div class="detail-item">{{request.user.email}}</div>
+    <div class="detail-item">{{request.user.college}}</div>
+    <div class="detail-item">{{request.user.status}}</div>
+    <div class="detail-item">{{request.user.website}}</div>
+    <div class="detail-item">{{request.user.phone_number}}</div>
+    <div class="detail-item">{{request.user.country}}</div>
+    <div class="detail-item">{{request.user.gender}}</div>
 </div>
 {% endblock %}
