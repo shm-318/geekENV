@@ -21,6 +21,9 @@ STATIC_DIR = os.path.join(str(BASE_DIR), 'static')
 TEMPLATE_DIR=BASE_DIR/'templates'
 MEDIA_ROOT=BASE_DIR/'media'
 
+#deploy
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -149,10 +152,6 @@ STATICFILES_DIRS=[STATIC_DIR,]
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-
-
-
 #for auth
 
 AUTHENTICATION_BACKENDS = (
@@ -207,3 +206,7 @@ AUTH_USER_MODEL = 'blog.User'
 
 #* For editorJS version
 EDITORJS_VERSION = '2.22.1'
+
+
+#activate djnago_heroku
+django_heroku.setting(locals())
