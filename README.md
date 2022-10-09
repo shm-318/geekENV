@@ -2,7 +2,7 @@
 * General info
 * Technologies
 
-### Live on  : https://geekenv1.herokuapp.com/
+### Live on  : https://geekenvapp.herokuapp.com/
 
 ### About-geekENV
 
